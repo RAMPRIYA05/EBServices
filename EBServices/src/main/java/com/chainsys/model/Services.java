@@ -1,5 +1,7 @@
 package com.chainsys.model;
 
+import java.sql.Date;
+
 public class Services {
        String name;
        String emailId;
@@ -11,6 +13,15 @@ public class Services {
        long phoneNumber;
        long aadhaarNumber;
        String userType;
+         
+       int serviceNumber;
+       double amount;
+       double readingUnits;
+       String readingTakenDate;
+       String readingDueDate;
+       String serviceType;
+       String billStatus;
+       
        
        public Services() {
     	   
@@ -86,12 +97,75 @@ public class Services {
 		this.userType = userType;
 	}
 
+	
+	
+	public int getServiceNumber() {
+		return serviceNumber;
+	}
+
+	public void setServiceNumber(int serviceNumber) {
+		this.serviceNumber = serviceNumber;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public double getReadingUnits() {
+		return readingUnits;
+	}
+
+	public void setReadingUnits(double readingUnits) {
+		this.readingUnits = readingUnits;
+	}
+
+	public String getReadingTakenDate() {
+		return readingTakenDate;
+	}
+
+	public void setReadingTakenDate(String readingTakenDate) {
+		this.readingTakenDate = readingTakenDate;
+	}
+
+	public String getReadingDueDate() {
+		return readingDueDate;
+	}
+
+	public void setReadingDueDate(String readingDueDate) {
+		this.readingDueDate = readingDueDate;
+	}
+
+	public String getServiceType() {
+		return serviceType;
+	}
+
+	public void setServiceType(String serviceType) {
+		this.serviceType = serviceType;
+	}
+
+	public String getBillStatus() {
+		return billStatus;
+	}
+
+	public void setBillStatus(String billStatus) {
+		this.billStatus = billStatus;
+	}
+
 	@Override
 	public String toString() {
 		return "Services [name=" + name + ", emailId=" + emailId + ", password=" + password + ", reEnterPassword="
 				+ reEnterPassword + ", address=" + address + ", district=" + district + ", state=" + state
-				+ ", phoneNumber=" + phoneNumber + ", aadhaarNumber=" + aadhaarNumber + ", userType=" + userType + "]";
+				+ ", phoneNumber=" + phoneNumber + ", aadhaarNumber=" + aadhaarNumber + ", userType=" + userType
+				+ ", serviceNumber=" + serviceNumber + ", amount=" + amount + ", readingUnits=" + readingUnits
+				+ ", readingTakenDate=" + readingTakenDate + ", readingDueDate=" + readingDueDate + ", serviceType="
+				+ serviceType + ", billStatus=" + billStatus + "]";
 	}
+
+	
 	
        
 }

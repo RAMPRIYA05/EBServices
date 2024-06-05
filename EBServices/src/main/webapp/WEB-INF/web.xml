@@ -6,7 +6,8 @@
   <welcome-file>AdminRegister.jsp</welcome-file>
   <welcome-file>AdminLogIn.jsp</welcome-file>
   <welcome-file>UserRegister.jsp</welcome-file>
-  
+  <welcome-file>AdminAccessCustomer.jsp</welcome-file>
+  <welcome-file>AdminFormTable.jsp</welcome-file>
    <welcome-file>FormTable.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>

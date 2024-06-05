@@ -8,7 +8,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
 <style>
         *{
             margin:0;
@@ -86,8 +85,8 @@ body{
                     <li><a href="http://localhost:8080/EBServices/">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
- <!--                    <li><a href="AdminAccessCustomer.jsp">Customer Profile</a></li> -->
-                     <li><a href="">Generate Customer Bill</a></li> -->
+                     <li><a href="ReadCustomerDetails" method="get">Customer Profile</a></li>
+                     <li><a href="">Generate Customer Bill</a></li> 
                 </ul>
             </nav>
         </header> 
@@ -106,7 +105,7 @@ body{
     </tr>
     </thead>
     
-    <%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
+<%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
 for(Services obj:list)
 {
 %>
@@ -120,7 +119,7 @@ for(Services obj:list)
         <td><%=obj.getAadhaarNumber() %></td>
         
 <th>
-<form action="AdminDeleteServlet" method="get">
+<form action="UpdateCustomerDetails" method="get">
   <input type="hidden" name="deleteemailId" value="<%=obj.getEmailId()%>">
   <input type="submit" style="color:brown;background-color:navajowhite;" name="delete" value="Delete">
 </form>
@@ -129,7 +128,7 @@ for(Services obj:list)
         
 <th>
 <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>">
-<a href="UpdateAdminName.jsp?editEmailId=<%=obj.getEmailId() %>">
+<a href="UpdateAllCustomerName.jsp?editEmailId=<%=obj.getEmailId() %>">
 <button style="color:brown;background-color:navajowhite;" type="button">Update</button></a>
 </th> 
 
@@ -138,6 +137,6 @@ for(Services obj:list)
 }
 %>
 </table>
-    <a href="AdminAccessTable.jsp">View Customer Profile</a>
+    
 </body>
 </html>

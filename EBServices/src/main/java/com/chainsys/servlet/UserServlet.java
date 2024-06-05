@@ -70,11 +70,12 @@ public class UserServlet extends HttpServlet {
 	    services.setUserType("User");
 	    try {
 			user.userRegister(services);
-			List<Services> list=new ArrayList<Services>();
-			list=user.readForm(services);
-			request.setAttribute("list", list);
-			 request.getRequestDispatcher("FormTable.jsp").forward(request, response);
-			 System.out.println("Successfully LoggedIn");
+//			List<Services> list=new ArrayList<Services>();
+//			list=user.readForm(services);
+//			request.setAttribute("list", list);
+//			 request.getRequestDispatcher("FormTable.jsp").forward(request, response);
+//			 System.out.println("Successfully LoggedIn");
+			response.sendRedirect("UserLogIn.jsp");
 			 
 		    }
 		
@@ -109,18 +110,14 @@ public class UserServlet extends HttpServlet {
 			String password1=user.userLogIn(emailId);
 			if(password.equals(password1))
 			{
+				
+				List<Services> list=new ArrayList<Services>();
+				list=user.readForm(services);
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("FormTable.jsp").forward(request, response);
 				System.out.println("Successfully LoggedIn");
-//				try {
-//					list=user.readForm(services);
-//					 System.out.println("Successfully LoggedIn");
-//					 
-//				    }
-//				
-//              catch(ClassNotFoundException | SQLException e) {
-//            	  e.printStackTrace();
-//               }
-//				request.setAttribute("list", list);
-//				request.getRequestDispatcher("FormTable.jsp").forward(request, response);
+				
+
 				
 			}
 			else

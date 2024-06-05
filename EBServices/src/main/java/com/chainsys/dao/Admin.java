@@ -54,10 +54,10 @@ public class Admin implements AdminDAO {
 	public List<Services> readForm(Services services) throws ClassNotFoundException, SQLException {
         
 		List<Services> list=new ArrayList<>();
-		
+		try {
 		Connection connection = JDBCConnection.getConnection();
-  	    System.out.println(connection);
-  	    String read="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number,user_type FROM user where email_id=?";
+  	   
+  	    String read="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where email_id=? && delete_user=0";
   	    PreparedStatement prepareStatement = connection.prepareStatement(read);
   	    prepareStatement.setString(1,services.getEmailId());
         ResultSet rows = prepareStatement.executeQuery();
@@ -65,31 +65,54 @@ public class Admin implements AdminDAO {
         while(rows.next())
         {
         	System.out.println("out");
-        	//Services services=new Services();
-        	services.setName(rows.getString(1));
-        	services.setEmailId(rows.getString(2));
-        	services.setPassword(rows.getString(3));
-        	services.setAddress(rows.getString(4));
-        	services.setDistrict(rows.getString(5));
-        	services.setState(rows.getString(6));
-        	services.setPhoneNumber(rows.getLong(7));
-        	services.setAadhaarNumber(rows.getLong(8));
-        	services.setUserType(rows.getString(9));
-        	list.add(services);
+        	 String name=rows.getString(1);
+             String emailId=rows.getString(2);
+             String password=rows.getString(3);
+             String address=rows.getString(4);
+             String district=rows.getString(5);
+             String state=rows.getString(6);
+             String phoneNumber=rows.getString(7);
+             long phoneNumber1=Long.parseLong(phoneNumber);
+             
+             String aadhaarNumber=rows.getString(8);
+             long aadhaarNumber1=Long.parseLong(aadhaarNumber);
+             Services service =new Services();
+             service.setName(name);
+             service.setEmailId(emailId);
+             service.setPassword(password);
+             service.setAddress(address);
+             service.setDistrict(district);
+             service.setState(state);
+             service.setPhoneNumber(phoneNumber1);
+             service.setAadhaarNumber(aadhaarNumber1);  
         	
+        	list.add(service);
+        	System.out.println(list);
         }	
+		}
+		catch(ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
         
 		return list;
 	}
 
 	@Override
 	public void deleteForm(Services services) throws ClassNotFoundException, SQLException {
-		Connection connection=JDBCConnection.getConnection();
-		String delete="DELETE from user where email_id=?";
-		PreparedStatement prepareStatement=connection.prepareStatement(delete);
-		prepareStatement.setString(1,services.getEmailId());
-		int rows=prepareStatement.executeUpdate();
-		System.out.println(rows+"Deleted");
+		
+		String delete="update user set delete_user=true where email_id=?";
+		try {
+			Connection connection=JDBCConnection.getConnection();
+			PreparedStatement prepareStatement=connection.prepareStatement(delete);
+			prepareStatement.setString(1,services.getEmailId());
+			int rows=prepareStatement.executeUpdate();
+			System.out.println(rows+"Deleted");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 		
 	}
 
@@ -101,8 +124,6 @@ public class Admin implements AdminDAO {
 		String update="UPDATE user SET name=?,address=?,district=?,state=?,phone_number=?,aadhaar_number=? WHERE email_id=?";
 		PreparedStatement prepareStatement=connection.prepareStatement(update);
 		prepareStatement.setString(1,services.getName());
-		//prepareStatement.setString(2,services.getEmailId());
-		//prepareStatement.setString(3, services.getPassword());
 		prepareStatement.setString(2,services.getAddress());
 		prepareStatement.setString(3,services.getDistrict());
 		prepareStatement.setString(4,services.getState());

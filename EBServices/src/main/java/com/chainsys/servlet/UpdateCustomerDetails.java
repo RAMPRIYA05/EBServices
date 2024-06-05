@@ -12,33 +12,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.chainsys.dao.Admin;
-
+import com.chainsys.dao.User;
 import com.chainsys.model.Services;
 
 /**
- * Servlet implementation class AdminDeleteServlet
+ * Servlet implementation class UpdateCustomerDetails
  */
-@WebServlet("/AdminDeleteServlet")
-public class AdminDeleteServlet extends HttpServlet {
+@WebServlet("/UpdateCustomerDetails")
+public class UpdateCustomerDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static Admin admin=new Admin();
-    public List<Services> list=new ArrayList<Services>();
-
-       
+	 public static User user=new User();
+     public List<Services> list=new ArrayList<Services>();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminDeleteServlet() {
+    public UpdateCustomerDetails() {
         super();
-       
+        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Services services=new Services();
 		String delete=request.getParameter("delete");
 		if(delete!=null && delete.equals("Delete"))
@@ -46,18 +42,18 @@ public class AdminDeleteServlet extends HttpServlet {
 			String emailId=request.getParameter("deleteemailId");
 			services.setEmailId(emailId);
 			try {
-				admin.deleteForm(services);
+				user.deleteForm(services);
 				System.out.println("Row deleted");
-				list=admin.readForm(services);
+				list=user.readAll(services);
 	            System.out.println("Displayed successfully..");
 	            request.setAttribute("list", list);
-	            request.getRequestDispatcher("AdminFormTable.jsp").forward(request, response);
+	            request.getRequestDispatcher("AdminAccessCustomer.jsp").forward(request, response);
 			}
 			catch (ClassNotFoundException | SQLException e) 
             {
 				e.printStackTrace();
             }
-            
+           
         
 			
 		}
@@ -81,23 +77,23 @@ public class AdminDeleteServlet extends HttpServlet {
 	    long aadhaarNumber1=Long.parseLong(aadhaarNumber);
 	
 	    services.setName(name);
-	   services.setEmailId(emailId);
+	    services.setEmailId(emailId);
 	    services.setPassword(password);
 	    services.setAddress(address);
 	    services.setDistrict(district);
 	    services.setState(state);
 	    services.setPhoneNumber(phoneNumber1);
 	    services.setAadhaarNumber(aadhaarNumber1);
-	    services.setUserType("Admin");
+	    services.setUserType("User");
 	    try {
-	    	admin.updateForm(services);
+	    	user.updateForm(services);
 	    	
 	    }
 	    catch(ClassNotFoundException | SQLException e){
 	    	e.printStackTrace();
 	    }
 	    try {
-			list=admin.readForm(services);	
+			list=user.readAll(services);	
 			
 	        
 			 
@@ -107,9 +103,11 @@ public class AdminDeleteServlet extends HttpServlet {
 	           e.printStackTrace();
 	       }
 	    request.setAttribute("list", list);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("AdminFormTable.jsp");
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("AdminAccessCustomer.jsp");
         dispatcher.forward(request, response);
-		
 	}
 
-}
+
+	}
+
+

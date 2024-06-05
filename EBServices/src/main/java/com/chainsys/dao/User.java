@@ -59,9 +59,55 @@ public class User implements UserDAO {
 		List<Services> list=new ArrayList<Services>();
 		try {
 		Connection connection = JDBCConnection.getConnection();
-  	    String read="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where delete_user=0";
+  	    String read="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where email_id=? && delete_user=0";
   	    PreparedStatement prepareStatement = connection.prepareStatement(read);
-  	    
+  	    prepareStatement.setString(1,services.getEmailId());
+        ResultSet rows = prepareStatement.executeQuery();
+        while(rows.next())
+        {
+        	System.out.println("out");
+            String name=rows.getString(1);
+            String emailId=rows.getString(2);
+            String password=rows.getString(3);
+            String address=rows.getString(4);
+            String district=rows.getString(5);
+            String state=rows.getString(6);
+            String phoneNumber=rows.getString(7);
+            long phoneNumber1=Long.parseLong(phoneNumber);
+            
+            String aadhaarNumber=rows.getString(8);
+            long aadhaarNumber1=Long.parseLong(aadhaarNumber);
+            Services service =new Services();
+            service.setName(name);
+            service.setEmailId(emailId);
+            service.setPassword(password);
+            service.setAddress(address);
+            service.setDistrict(district);
+            service.setState(state);
+            service.setPhoneNumber(phoneNumber1);
+            service.setAadhaarNumber(aadhaarNumber1);     	
+            //Services service = new Services(name,emailId,password,address,district,state,phoneNumber1,aadhaarNumber1);
+//            
+        	list.add(service);
+        	System.out.println(list);
+        }
+       
+		}
+		catch(ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		 return list;
+	}
+    
+	@Override
+	public List<Services> readAll(Services services) throws ClassNotFoundException, SQLException {
+		
+		List<Services> list=new ArrayList<Services>();
+		try {
+		Connection connection = JDBCConnection.getConnection();
+  	    String read="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where user_type=? && delete_user=0";
+  	    PreparedStatement prepareStatement = connection.prepareStatement(read);
+  	    prepareStatement.setString(1,"User");
         ResultSet rows = prepareStatement.executeQuery();
         while(rows.next())
         {
@@ -99,6 +145,7 @@ public class User implements UserDAO {
 		 return list;
 	}
 
+
 	@Override
 	public void deleteForm(Services services) throws ClassNotFoundException, SQLException {
 		
@@ -128,8 +175,7 @@ public class User implements UserDAO {
 		String update="UPDATE user SET name=?,address=?,district=?,state=?,phone_number=?,aadhaar_number=? WHERE email_id=?";
 		PreparedStatement prepareStatement=connection.prepareStatement(update);
 		prepareStatement.setString(1,services.getName());
-		//prepareStatement.setString(2,services.getEmailId());
-		//prepareStatement.setString(3, services.getPassword());
+		
 		prepareStatement.setString(2,services.getAddress());
 		prepareStatement.setString(3,services.getDistrict());
 		prepareStatement.setString(4,services.getState());
