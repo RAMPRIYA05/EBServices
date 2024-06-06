@@ -85,8 +85,10 @@ body{
                     <li><a href="http://localhost:8080/EBServices/">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-                     <li><a href="ReadCustomerDetails" method="get">Customer Profile</a></li>
-                     <li><a href="">Generate Customer Bill</a></li> 
+                      <!-- <li><a href="ReadCustomerDetails" method="get">Customer Profile</a></li> -->
+                     <li><a href="">Generate Customer Bill</a></li>
+                     <li><a href="BillTable.jsp">Enter Customer Bill</a></li>
+                     <li><a href="CustomerRetriveBill" method="get">View Customer Bill Details</a></li>
                 </ul>
             </nav>
         </header> 
@@ -131,6 +133,7 @@ for(Services obj:list)
 <a href="UpdateAllCustomerName.jsp?editEmailId=<%=obj.getEmailId() %>">
 <button style="color:brown;background-color:navajowhite;" type="button">Update</button></a>
 </th> 
+
 
 </tr>
 <%

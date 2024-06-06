@@ -71,8 +71,8 @@ public class UserDeleteServlet extends HttpServlet {
 	    String address=request.getParameter("address");
 	    String district=request.getParameter("district");
 	    String state=request.getParameter("state");
-	    String phoneNumber=request.getParameter("phoneNumber");
-	    System.out.println(phoneNumber);
+	    //String phoneNumber=request.getParameter("phoneNumber");
+	   // System.out.println(phoneNumber);
 	    long phoneNumber1=Long.parseLong(request.getParameter("phoneNumber"));
 	    String aadhaarNumber=request.getParameter("aadhaarNumber");
 	    long aadhaarNumber1=Long.parseLong(aadhaarNumber);

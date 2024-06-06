@@ -86,8 +86,8 @@ body{
                     <li><a href="http://localhost:8080/EBServices/">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
- <!--                    <li><a href="AdminAccessCustomer.jsp">Customer Profile</a></li> -->
-                     <li><a href="">Generate Customer Bill</a></li> -->
+                    <li><a href="ReadCustomerDetails" method="get">Customer Profile</a></li> 
+                    <li><a href="">Generate Customer Bill</a></li> 
                 </ul>
             </nav>
         </header> 
@@ -138,6 +138,6 @@ for(Services obj:list)
 }
 %>
 </table>
-    <a href="AdminAccessTable.jsp">View Customer Profile</a>
+   <!--  <a href="AdminAccessTable.jsp">View Customer Profile</a> -->
 </body>
 </html>

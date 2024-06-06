@@ -44,7 +44,7 @@ public class ReadCustomerDetails extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("list", list);
-		RequestDispatcher dispatcher =request.getRequestDispatcher("AdminFormTable.jsp");
+		RequestDispatcher dispatcher =request.getRequestDispatcher("AdminAccessCustomer.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -101,13 +101,16 @@ public class AdminServlet extends HttpServlet {
 			if(password.equals(password1))
 			{
 				
-				
+				System.out.println("Successfully LoggedIn");
 				List<Services> list=new ArrayList<Services>();
 				list=admin.readForm(services);
 				request.setAttribute("list", list);
-				RequestDispatcher dispatcher =request.getRequestDispatcher("AdminFormTable.jsp");
+				//RequestDispatcher dispatcher =request.getRequestDispatcher("AdminWelcomePage.jsp");
+			    RequestDispatcher dispatcher =request.getRequestDispatcher("AdminFormTable.jsp");
 				dispatcher.forward(request, response);
-				System.out.println("Successfully LoggedIn");
+				
+				//request.getRequestDispatcher("AdminWelcomePage.jsp").forward(request, response);
+				
 				
 			}
 			else
@@ -119,6 +122,7 @@ public class AdminServlet extends HttpServlet {
 		catch(ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
 		}
 		else
 		{
@@ -127,13 +131,15 @@ public class AdminServlet extends HttpServlet {
 		
 	}
 
+	
+
 //	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
 //		Services services=new Services();
-//		List<Services> list=new ArrayList<>();
+//		List<Services> list=new ArrayList<Services>();
 //		
 //		list=admin.readForm(services);
 //		request.setAttribute("list", list);
-//	    request.getRequestDispatcher("FormTable.jsp").forward(request, response);
+//	    request.getRequestDispatcher("AdminFormTable.jsp.jsp").forward(request, response);
 //		
 //	}	
 }

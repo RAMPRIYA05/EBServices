@@ -20,7 +20,7 @@ public class Services {
        String readingTakenDate;
        String readingDueDate;
        String serviceType;
-       String billStatus;
+       String status;
        
        
        public Services() {
@@ -147,12 +147,12 @@ public class Services {
 		this.serviceType = serviceType;
 	}
 
-	public String getBillStatus() {
-		return billStatus;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setBillStatus(String billStatus) {
-		this.billStatus = billStatus;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
@@ -162,9 +162,10 @@ public class Services {
 				+ ", phoneNumber=" + phoneNumber + ", aadhaarNumber=" + aadhaarNumber + ", userType=" + userType
 				+ ", serviceNumber=" + serviceNumber + ", amount=" + amount + ", readingUnits=" + readingUnits
 				+ ", readingTakenDate=" + readingTakenDate + ", readingDueDate=" + readingDueDate + ", serviceType="
-				+ serviceType + ", billStatus=" + billStatus + "]";
+				+ serviceType + ", status=" + status + "]";
 	}
 
+	
 	
 	
        

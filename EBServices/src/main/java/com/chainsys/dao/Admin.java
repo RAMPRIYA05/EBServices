@@ -61,10 +61,11 @@ public class Admin implements AdminDAO {
   	    PreparedStatement prepareStatement = connection.prepareStatement(read);
   	    prepareStatement.setString(1,services.getEmailId());
         ResultSet rows = prepareStatement.executeQuery();
-        System.out.println("in");
+       
+        System.out.println("priya");
         while(rows.next())
         {
-        	System.out.println("out");
+        	System.out.println("s");
         	 String name=rows.getString(1);
              String emailId=rows.getString(2);
              String password=rows.getString(3);

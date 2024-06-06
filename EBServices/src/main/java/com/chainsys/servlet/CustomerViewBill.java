@@ -10,23 +10,28 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.chainsys.dao.UserBillImpl;
+import com.chainsys.dao.ViewBill;
 import com.chainsys.model.Services;
 
-
-@WebServlet("/Bill")
-public class Bill extends HttpServlet {
+/**
+ * Servlet implementation class CustomerViewBill
+ */
+@WebServlet("/CustomerViewBill")
+public class CustomerViewBill extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 	List<Services> list=new ArrayList<Services>();
-	UserBillImpl userBill=new UserBillImpl();
-    public Bill() {
+	ViewBill viewBill=new ViewBill();
+	
+    public CustomerViewBill() {
         super();
         
     }
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	    Services services=new Services();
@@ -51,22 +56,15 @@ public class Bill extends HttpServlet {
 	    services.setServiceType(serviceType);
 	    services.setStatus(status);
 	    services.setAddress(address);
+	    HttpSession session=request.getSession();
 	    try {
-//	    	if (userBill.emailExists(emailId)) {
-//	    		System.out.println("eeee");
-	            userBill.insertIntoBill(services);
-	            List<Services> list=new ArrayList<Services>();
-				list=userBill.readForm(services);
-				request.setAttribute("list", list);
-				request.getRequestDispatcher("CustomerBillTable.jsp").forward(request, response);
-	            //System.out.println("Inserted into bill table successfully.");
-	            //response.sendRedirect("CustomerBillTable.jsp");
-	            
-//	        } else {
-//	        	
-//	            System.out.println("Email does not exist in the user table.");
-//	        	
-//	        }
+	    	session.setAttribute("emailId", emailId);
+	    	viewBill.insertIntoBill(services);
+//            List<Services> list=new ArrayList<Services>();
+//			list=viewBill.readForm(services);
+//			request.setAttribute("list", list);
+//			request.getRequestDispatcher("ViewBillTable.jsp").forward(request, response);
+	    	doPost(request,response);
 	    }
 	    catch(SQLException e) {
 	    	  e.printStackTrace();
@@ -74,13 +72,21 @@ public class Bill extends HttpServlet {
 			
 			e.printStackTrace();
 		}
+	    
 	}
 
 	
-	
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		Services services=new Services();
+//		List<Services> list=new ArrayList<Services>();
+//		try {
+//			list=viewBill.readForm(services);
+//		} catch (ClassNotFoundException | SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		request.setAttribute("list", list);
+//		request.getRequestDispatcher("ViewBillTable.jsp").forward(request, response);		
 		//doGet(request, response);
 	}
 

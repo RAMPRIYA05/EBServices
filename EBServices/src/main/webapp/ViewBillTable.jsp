@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
     <%@page import=" com.chainsys.model.Services" %>
      <%@ page import="java.util.ArrayList" %>
        <%@ page import="java.util.List" %> 
+       
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-         <table border="1">
+
+
+  <table border="1">
     <thead>
     <tr>
     
@@ -27,8 +31,7 @@
     <th>Address</th>  
     </tr>
     </thead>
-    
-<%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
+    <%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
 for(Services obj:list)
 {
 %>
@@ -48,5 +51,6 @@ for(Services obj:list)
 <%
 }
 %>
+    
 </body>
 </html>
