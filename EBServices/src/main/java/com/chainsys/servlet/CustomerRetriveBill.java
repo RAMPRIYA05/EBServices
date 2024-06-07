@@ -30,10 +30,10 @@ public class CustomerRetriveBill extends HttpServlet {
 			Services services=new Services();
 			List<Services> list=new ArrayList<Services>();
 			try {
-				list=userBill.readParticularBill(services);
+				list=userBill.readForm(services);
 				//list=viewBill.readForm(services);
 			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			request.setAttribute("list", list);
@@ -46,8 +46,7 @@ public class CustomerRetriveBill extends HttpServlet {
 	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
 	}
 
 }

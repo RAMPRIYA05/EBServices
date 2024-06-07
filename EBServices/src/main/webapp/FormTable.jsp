@@ -83,7 +83,7 @@ body{
                     <li><a href="http://localhost:8080/EBServices/">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-                    <li><a href="CustomerRetriveBill" method="get">View Bill</a></li> 
+                    <li><a href="ViewBillLogIn.jsp">View Bill</a></li> 
                     <li><a href="">Pay Bill</a></li> 
                 </ul>
             </nav>

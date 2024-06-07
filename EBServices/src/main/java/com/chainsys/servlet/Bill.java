@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,15 +51,17 @@ public class Bill extends HttpServlet {
 	    services.setReadingDueDate(readingDueDate);
 	    services.setServiceType(serviceType);
 	    services.setStatus(status);
+	    System.out.println(status);
+	    System.out.println("status4");
 	    services.setAddress(address);
 	    try {
 //	    	if (userBill.emailExists(emailId)) {
 //	    		System.out.println("eeee");
 	            userBill.insertIntoBill(services);
 	            List<Services> list=new ArrayList<Services>();
-				list=userBill.readForm(services);
+				list=userBill.readParticularBill(services);
 				request.setAttribute("list", list);
-				request.getRequestDispatcher("CustomerBillTable.jsp").forward(request, response);
+				request.getRequestDispatcher("CustomerAllBillTable.jsp").forward(request, response);
 	            //System.out.println("Inserted into bill table successfully.");
 	            //response.sendRedirect("CustomerBillTable.jsp");
 	            
@@ -82,6 +85,35 @@ public class Bill extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//doGet(request, response);
+		
+		Services services=new Services();
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		List<Services> list=new ArrayList<Services>();
+		String emailId=request.getParameter("emailId");
+		services.setEmailId(emailId);
+		try {
+			if(emailId.equals(userBill.ViewBillLogIn(emailId)))
+			{
+				System.out.println("viewBill");
+			
+		
+			
+		
+			//userBill.insertIntoBill(services);
+			list=userBill.readParticularBill(services);
+			request.setAttribute("list", list);
+			RequestDispatcher dispatcher =request.getRequestDispatcher("CustomerBillTable.jsp");
+			dispatcher.forward(request, response);
+			}
+			else {
+				response.sendRedirect("ViewBillLogIn.jsp");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }

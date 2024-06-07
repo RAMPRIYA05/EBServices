@@ -96,8 +96,10 @@ public class UserBillImpl implements UserBill{
 		String read="SELECT email_id,service_number,aadhaar_number,amount,reading_units,reading_taken_date,reading_due_date,service_type,status,address FROM bill";
 		PreparedStatement prepareStatement = connection.prepareStatement(read);
 		ResultSet rows = prepareStatement.executeQuery();
+		System.out.println("customer");
 		 while(rows.next())
 	        {
+			 System.out.println("bill");
 			 String emailId=rows.getString(1);
 			 String serviceNumber=rows.getString(2);
 			 int serviceNumber1=Integer.parseInt(serviceNumber);
@@ -111,6 +113,8 @@ public class UserBillImpl implements UserBill{
 	         String readingDueDate=rows.getString(7);
 	         String serviceType=rows.getString(8);
 	         String status=rows.getString(9);
+	         System.out.println(status);
+	         System.out.println("status");
 	         String address=rows.getString(10);
 	         Services service =new Services();
 	         service.setEmailId(emailId);
@@ -133,7 +137,7 @@ public class UserBillImpl implements UserBill{
 		}
 		return list;
 		}
-	
+@Override
 public List<Services> readParticularBill(Services services) throws ClassNotFoundException, SQLException {
 		
 		List<Services> list=new ArrayList<Services>();
@@ -141,10 +145,12 @@ public List<Services> readParticularBill(Services services) throws ClassNotFound
 		Connection connection = JDBCConnection.getConnection();
 		String read="SELECT email_id,service_number,aadhaar_number,amount,reading_units,reading_taken_date,reading_due_date,service_type,status,address FROM bill where email_id=?";
 		PreparedStatement prepareStatement = connection.prepareStatement(read);
-	    prepareStatement.setString(1,emailId);
+	    prepareStatement.setString(1,services.getEmailId());
 		ResultSet rows = prepareStatement.executeQuery();
+		System.out.println("hi");
 		 while(rows.next())
 	        {
+			 System.out.println("10");
 			 String emailId=rows.getString(1);
 			 String serviceNumber=rows.getString(2);
 			 int serviceNumber1=Integer.parseInt(serviceNumber);
@@ -152,12 +158,14 @@ public List<Services> readParticularBill(Services services) throws ClassNotFound
 	         long aadhaarNumber1=Long.parseLong(aadhaarNumber);
 	         String amount=rows.getString(4);
 	         double amount1=Double.parseDouble(amount);
-	        String readingUnits=rows.getString(5);
+	         String readingUnits=rows.getString(5);
 	         double readingUnits1=Double.parseDouble(readingUnits);
 	         String readingTakenDate=rows.getString(6);
 	         String readingDueDate=rows.getString(7);
 	         String serviceType=rows.getString(8);
 	         String status=rows.getString(9);
+	         System.out.println(status);
+	         System.out.println("status1");
 	         String address=rows.getString(10);
 	         Services service =new Services();
 	         service.setEmailId(emailId);
@@ -169,6 +177,8 @@ public List<Services> readParticularBill(Services services) throws ClassNotFound
 	         service.setReadingDueDate(readingDueDate);
 	         service.setServiceType(serviceType);
 	         service.setStatus(status);
+	         System.out.println(status);
+	         System.out.println("status2");
 	         service.setAddress(address);
 	         list.add(service);
 	        	System.out.println(list);
@@ -180,5 +190,22 @@ public List<Services> readParticularBill(Services services) throws ClassNotFound
 		}
 		return list;
 		}
+
+@Override
+public String ViewBillLogIn(String emailId) throws ClassNotFoundException, SQLException {
+	Connection connection=JDBCConnection.getConnection();
+
+	String logIn="select email_id from user where email_id=?";
+	PreparedStatement prepareStatement=connection.prepareStatement(logIn);
+	prepareStatement.setString(1,emailId);
+	ResultSet rows = prepareStatement.executeQuery();
+	while(rows.next()) {
+		 emailId=rows.getString(1);
+		 
+	}
+	System.out.println(rows);
+	return emailId;
+	
+}
 	
 }

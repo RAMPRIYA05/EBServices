@@ -25,6 +25,7 @@
     <th>Service Type</th>
     <th>Status</th>
     <th>Address</th>  
+    <th>Pay</th>
     </tr>
     </thead>
     
@@ -43,10 +44,24 @@ for(Services obj:list)
       <td><%=obj.getServiceType() %></td>
       <td><%=obj.getStatus() %></td>
       <td><%=obj.getAddress() %></td>
+      <th>
+
+<!-- <a href="PaymentProcessForm.jsp">Pay</a> -->
+ <form action="PaymentProcessForm.jsp">
+                    <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>">
+                  
+                    <input type="hidden" name="amount" value="<%= obj.getAmount() %>">
+                    
+                    <input type="submit" name="pay" value="Pay">
+                </form>
+</th>
+      
  </tr>     
  
 <%
 }
 %>
+
+
 </body>
 </html>

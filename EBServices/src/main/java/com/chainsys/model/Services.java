@@ -22,6 +22,9 @@ public class Services {
        String serviceType;
        String status;
        
+       String paymentId;
+       String paymentDate;
+       long accountNumber;
        
        public Services() {
     	   
@@ -154,6 +157,30 @@ public class Services {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+    	
+	public String getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
+	}
+
+	public long getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(long accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+    
+	public String getPaymentDate() {
+		return paymentDate;
+	}
+
+	public void setPaymentDate(String paymentDate) {
+		this.paymentDate = paymentDate;
+	}
 
 	@Override
 	public String toString() {
@@ -162,8 +189,11 @@ public class Services {
 				+ ", phoneNumber=" + phoneNumber + ", aadhaarNumber=" + aadhaarNumber + ", userType=" + userType
 				+ ", serviceNumber=" + serviceNumber + ", amount=" + amount + ", readingUnits=" + readingUnits
 				+ ", readingTakenDate=" + readingTakenDate + ", readingDueDate=" + readingDueDate + ", serviceType="
-				+ serviceType + ", status=" + status + "]";
+				+ serviceType + ", status=" + status + ", paymentId=" + paymentId + ", paymentDate=" + paymentDate
+				+ ", accountNumber=" + accountNumber + "]";
 	}
+
+	
 
 	
 	
