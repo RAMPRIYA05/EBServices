@@ -26,6 +26,12 @@ public class Services {
        String paymentDate;
        long accountNumber;
        
+       double payAmount;
+       String paymentStatus;
+       
+       int complaintId;
+       String complaintStatus;
+       String description;
        public Services() {
     	   
        }
@@ -181,6 +187,49 @@ public class Services {
 	public void setPaymentDate(String paymentDate) {
 		this.paymentDate = paymentDate;
 	}
+	
+	
+
+	public double getPayAmount() {
+		return payAmount;
+	}
+
+	public void setPayAmount(double payAmount) {
+		this.payAmount = payAmount;
+	}
+    
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+  
+	
+	public int getComplaintId() {
+		return complaintId;
+	}
+
+	public void setComplaintId(int complaintId) {
+		this.complaintId = complaintId;
+	}
+
+	public String getComplaintStatus() {
+		return complaintStatus;
+	}
+
+	public void setComplaintStatus(String complaintStatus) {
+		this.complaintStatus = complaintStatus;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	@Override
 	public String toString() {
@@ -190,9 +239,16 @@ public class Services {
 				+ ", serviceNumber=" + serviceNumber + ", amount=" + amount + ", readingUnits=" + readingUnits
 				+ ", readingTakenDate=" + readingTakenDate + ", readingDueDate=" + readingDueDate + ", serviceType="
 				+ serviceType + ", status=" + status + ", paymentId=" + paymentId + ", paymentDate=" + paymentDate
-				+ ", accountNumber=" + accountNumber + "]";
+				+ ", accountNumber=" + accountNumber + ", payAmount=" + payAmount + ", paymentStatus=" + paymentStatus
+				+ ", complaintId=" + complaintId + ", complaintStatus=" + complaintStatus + ", description="
+				+ description + "]";
 	}
 
+	
+
+	
+
+	
 	
 
 	

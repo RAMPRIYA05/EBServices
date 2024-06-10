@@ -15,25 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.chainsys.dao.User;
 import com.chainsys.model.Services;
 
-/**
- * Servlet implementation class UpdateCustomerDetails
- */
+
 @WebServlet("/UpdateCustomerDetails")
 public class UpdateCustomerDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 public static User user=new User();
      public List<Services> list=new ArrayList<Services>();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public UpdateCustomerDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Services services=new Services();
 		String delete=request.getParameter("delete");

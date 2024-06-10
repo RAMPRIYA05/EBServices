@@ -37,7 +37,7 @@ public class CustomerRetriveBill extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("list", list);
-			request.getRequestDispatcher("CustomerBillTable.jsp").forward(request, response);	
+			request.getRequestDispatcher("CustomerBill.jsp").forward(request, response);	
 //		}
 //		catch(Exception e) {
 //			System.out.println(e);

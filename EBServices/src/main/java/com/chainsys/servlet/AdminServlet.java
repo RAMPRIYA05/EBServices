@@ -27,17 +27,13 @@ public class AdminServlet extends HttpServlet {
 	public static Admin admin=new Admin();
 	public static List<Services> list=new ArrayList<>();
     public static Services services=new Services();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public AdminServlet() {
         super();
         
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -82,9 +78,7 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		PrintWriter out=response.getWriter();
@@ -100,16 +94,15 @@ public class AdminServlet extends HttpServlet {
 			String password1=admin.adminLogIn(emailId);
 			if(password.equals(password1))
 			{
-				
+				//response.sendRedirect("AdminHome.jsp");
 				System.out.println("Successfully LoggedIn");
 				List<Services> list=new ArrayList<Services>();
 				list=admin.readForm(services);
-				request.setAttribute("list", list);
-				//RequestDispatcher dispatcher =request.getRequestDispatcher("AdminWelcomePage.jsp");
+				request.setAttribute("list", list);				
 			    RequestDispatcher dispatcher =request.getRequestDispatcher("AdminFormTable.jsp");
 				dispatcher.forward(request, response);
 				
-				//request.getRequestDispatcher("AdminWelcomePage.jsp").forward(request, response);
+				
 				
 				
 			}
@@ -132,14 +125,4 @@ public class AdminServlet extends HttpServlet {
 	}
 
 	
-
-//	protected void retrive(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
-//		Services services=new Services();
-//		List<Services> list=new ArrayList<Services>();
-//		
-//		list=admin.readForm(services);
-//		request.setAttribute("list", list);
-//	    request.getRequestDispatcher("AdminFormTable.jsp.jsp").forward(request, response);
-//		
-//	}	
 }

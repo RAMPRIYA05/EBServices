@@ -100,10 +100,10 @@
         <option value="commercial">Commercial</option>
     </select><br><br>
 
-    <label for="billStatus">Bill Status:</label><br>
-    <select id="billStatus" name="billStatus">
+    <label for="status">Bill Status:</label><br>
+    <select id="status" name="status">
         <option value="paid">Paid</option>
-        <option value="not_paid">Not Paid</option>
+        <option value="notPaid">Not Paid</option>
         <option value="pending">Pending</option>
     </select><br><br>
 

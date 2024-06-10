@@ -195,7 +195,7 @@ public List<Services> readParticularBill(Services services) throws ClassNotFound
 public String ViewBillLogIn(String emailId) throws ClassNotFoundException, SQLException {
 	Connection connection=JDBCConnection.getConnection();
 
-	String logIn="select email_id from user where email_id=?";
+	String logIn="select email_id from bill where email_id=?";
 	PreparedStatement prepareStatement=connection.prepareStatement(logIn);
 	prepareStatement.setString(1,emailId);
 	ResultSet rows = prepareStatement.executeQuery();
