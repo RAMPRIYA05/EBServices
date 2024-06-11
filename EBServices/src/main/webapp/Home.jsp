@@ -14,7 +14,6 @@
            background-color:black;
            opacity:0.8;
            width:1250px;
-           /* color:blueviolet; */
            padding:15px;
         }
 
@@ -109,9 +108,8 @@ body{
                 <img class="logo" src="EBLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
-                    <li><a class="buttons-atag active" href="">Home</a></li>
-                    <li><a href="">About Us</a></li>
-                    <!-- <li><a href="">Services</a></li> -->
+                    <li><a class="buttons-atag active" href="http://localhost:8080/EBServices/">Home</a></li>
+                    <li><a href="">About Us</a></li>     
                     <li><a href="">Contact Us</a></li>
                 </ul>
                  <div class="dropdown">SignUp

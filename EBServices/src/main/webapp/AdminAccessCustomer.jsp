@@ -82,12 +82,11 @@ body{
                 <img class="logo" src="EBLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
-                    <li><a href="http://localhost:8080/EBServices/">Home</a></li>
+                    <li><a href=http://localhost:8080/EBServices/AdminHome.jsp>Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-                      <!-- <li><a href="ReadCustomerDetails" method="get">Customer Profile</a></li> -->
                      <li><a href="">Generate Customer Bill</a></li>
-                     <li><a href="BillTable.jsp">Enter Customer Bill</a></li>
+                   <!--   <li><a href="BillTable.jsp">Enter Customer Bill</a></li> -->
                      <li><a href="CustomerRetriveBill" method="get">View Customer Bill Details</a></li>
                 </ul>
             </nav>
@@ -104,6 +103,10 @@ body{
     <th>State</th>
     <th>Phone Number</th>
     <th>Aadhaar Number</th>
+    <th>Update</th>
+    <th>Delete</th>
+    <th>Enter Customer Bill</th>
+    <th></th>
     </tr>
     </thead>
     
@@ -134,7 +137,16 @@ for(Services obj:list)
 <button style="color:brown;background-color:navajowhite;" type="button">Update</button></a>
 </th> 
 
-
+<th>
+<form action="BillTable.jsp">
+  
+     <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>"> 
+     <input type="hidden" name="aadhaarNumber" value="<%=obj.getAadhaarNumber() %>"> 
+     <input type="hidden" name="address" value="<%=obj.getAddress() %>"> 
+     <input type="submit" name="Enter Customer Bill" value="Enter Customer Bill"> 
+</form>
+  
+</th>
 </tr>
 <%
 }

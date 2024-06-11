@@ -37,9 +37,8 @@ public class AdminServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out=response.getWriter();
-		HttpSession session=request.getSession(false);
-		if(session!=null) {
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession(true);
 		
 		Services services=new Services();
 	    String name=request.getParameter("name");
@@ -48,7 +47,7 @@ public class AdminServlet extends HttpServlet {
 	    String address=request.getParameter("address");
 	    String district=request.getParameter("district");
 	    String state=request.getParameter("state");
-	    String phoneNumber=request.getParameter("phoneNumber");
+	   // String phoneNumber=request.getParameter("phoneNumber");
 	    long phoneNumber1=Long.parseLong(request.getParameter("phoneNumber"));
 	    String aadhaarNumber=request.getParameter("aadhaarNumber");
 	    long aadhaarNumber1=Long.parseLong(aadhaarNumber);
@@ -65,42 +64,49 @@ public class AdminServlet extends HttpServlet {
 	    services.setUserType("Admin");
 	    try {
 			admin.adminRegister(services);
+			session.setAttribute("admin", services);
 			response.sendRedirect("AdminLogIn.jsp");
-		} catch (ClassNotFoundException | SQLException e) 
+		} 
+	    catch (ClassNotFoundException | SQLException e) 
 	    {
 			
 			e.printStackTrace();
+			response.sendRedirect("AdminRegister.jsp");
 		}
 	    
 		}
-		else {
-			response.sendRedirect("AdminRegister.jsp");
-		}
-	}
-
+		
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out=response.getWriter();
-		HttpSession session=request.getSession(false);
-		if(session!=null) {
+		
+		
 		Services services=new Services();
 		String emailId=request.getParameter("emailId");
 		String password=request.getParameter("password");
+		
 		services.setEmailId(emailId);
 		services.setPassword(password);
 		services.setUserType("Admin");
+		
 		try {
 			String password1=admin.adminLogIn(emailId);
 			if(password.equals(password1))
 			{
-				//response.sendRedirect("AdminHome.jsp");
+				HttpSession session = request.getSession(true); 
+	            session.setAttribute("emailId", emailId);
+	            session.setAttribute("loggedIn", true);
+	            
 				System.out.println("Successfully LoggedIn");
-				List<Services> list=new ArrayList<Services>();
-				list=admin.readForm(services);
-				request.setAttribute("list", list);				
-			    RequestDispatcher dispatcher =request.getRequestDispatcher("AdminFormTable.jsp");
-				dispatcher.forward(request, response);
+				response.sendRedirect("AdminHome.jsp");
+				System.out.println("Home");
+				
+//				List<Services> list=new ArrayList<Services>();
+//				list=admin.readForm(services);
+//				request.setAttribute("list", list);				
+//			    RequestDispatcher dispatcher =request.getRequestDispatcher("AdminFormTable.jsp");
+//				dispatcher.forward(request, response);
 				
 				
 				
@@ -116,11 +122,8 @@ public class AdminServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		}
-		else
-		{
-			response.sendRedirect("AdminLogIn.jsp");
-		}
+		
+		
 		
 	}
 

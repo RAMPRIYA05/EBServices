@@ -18,9 +18,7 @@ import com.chainsys.dao.UserBillImpl;
 import com.chainsys.dao.ViewBill;
 import com.chainsys.model.Services;
 
-/**
- * Servlet implementation class CustomerViewBill
- */
+
 @WebServlet("/CustomerViewBill")
 public class CustomerViewBill extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -57,45 +55,37 @@ public class CustomerViewBill extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		 response.getWriter().append("Served at: ").append(request.getContextPath());
-			
-			PrintWriter out=response.getWriter();
-			HttpSession session=request.getSession(false);
-			if(session!=null) {
-		Services services=new Services();
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		List<Services> list=new ArrayList<Services>();
-		String emailId=request.getParameter("emailId");
-		services.setEmailId(emailId);
-		try {
-			if(emailId.equals(userBill.ViewBillLogIn(emailId)))
-			{
-				System.out.println("viewBill");
-			
-		
-			
-		
-			//userBill.insertIntoBill(services);
-			list=userBill.readParticularBill(services);
-			request.setAttribute("list", list);
-			RequestDispatcher dispatcher =request.getRequestDispatcher("CustomerBillTable.jsp");
-			dispatcher.forward(request, response);
-			}
-			else {
-				response.sendRedirect("ViewBillLogIn.jsp");
-			}
-		} catch (ClassNotFoundException | SQLException e) {
-			
-			e.printStackTrace();
-		}
-			}
-			else {
-				response.sendRedirect("ViewBillLogIn.jsp");
-			}
-		
-		
+
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+//
+//		PrintWriter out = response.getWriter();
+//		HttpSession session = request.getSession(false);
+//		if (session != null) {
+//			Services services = new Services();
+//			response.getWriter().append("Served at: ").append(request.getContextPath());
+//			List<Services> list = new ArrayList<Services>();
+//			String emailId = request.getParameter("emailId");
+//			services.setEmailId(emailId);
+//			try {
+//				if (emailId.equals(userBill.ViewBillLogIn(emailId))) {
+//					System.out.println("viewBill");
+//
+//					// userBill.insertIntoBill(services);
+//					list = userBill.readParticularBill(services);
+//					request.setAttribute("list", list);
+//					RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerBillTable.jsp");
+//					dispatcher.forward(request, response);
+//				} else {
+//					response.sendRedirect("ViewBillLogIn.jsp");
+//				}
+//			} catch (ClassNotFoundException | SQLException e) {
+//
+//				e.printStackTrace();
+//			}
+//		} else {
+//			response.sendRedirect("ViewBillLogIn.jsp");
+//		}
+
 	}
-	
 
 }

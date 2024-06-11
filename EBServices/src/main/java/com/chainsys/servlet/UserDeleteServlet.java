@@ -86,6 +86,7 @@ public class UserDeleteServlet extends HttpServlet {
 	    services.setPhoneNumber(phoneNumber1);
 	    services.setAadhaarNumber(aadhaarNumber1);
 	    services.setUserType("User");
+	    
 	    try {
 	    	user.updateForm(services);
 	    	

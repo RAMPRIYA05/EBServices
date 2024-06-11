@@ -80,7 +80,7 @@ body{
                 <img class="logo" src="EBLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
-                    <li><a href="http://localhost:8080/EBServices/">Home</a></li>
+                    <li><a href="http://localhost:8080/EBServices/UserHome.jsp">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                     
@@ -106,6 +106,7 @@ body{
     <th>Address</th>  
     <th>Pay</th>
     <th>Complaint</th>
+    <th>Complaint Status</th>
     </tr>
     </thead>
     
@@ -139,16 +140,20 @@ for(Services obj:list)
 <th>
 <form action="Complaint.jsp">
      <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>"> 
+     <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>"> 
      <input type="submit" name="complaint" value="Complaint Form"> 
+</form>
+</th> 
+
+<th>
+<form action="CustomerComplaintStatus" method="post">
+     <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>"> 
+     <input type="submit" name="complaintStatus" value="Complaint Status"> 
 </form>
 </th> 
  </tr>     
  
-  <%-- <th>
- <form action="ComplaintServlet" method="post">Complaint Status</form>
-  <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>"> 
-                    <input type="submit" name="complaintStatus" value="Complaint Status"> 
- </th> --%>
+ 
  
  <%
 }

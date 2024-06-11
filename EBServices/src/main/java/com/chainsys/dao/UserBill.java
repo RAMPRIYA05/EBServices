@@ -12,5 +12,5 @@ public interface UserBill {
 	//public  boolean emailExists(String emailId) throws ClassNotFoundException, SQLException;
 	 public List<Services> readForm(Services services) throws ClassNotFoundException, SQLException;
 	 public List<Services> readParticularBill(Services services) throws ClassNotFoundException, SQLException;
-	 public String ViewBillLogIn(String emailId) throws ClassNotFoundException, SQLException ;
+//	 public String ViewBillLogIn(String emailId) throws ClassNotFoundException, SQLException ;
 }

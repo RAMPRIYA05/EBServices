@@ -5,6 +5,7 @@
   <welcome-file>Home.jsp</welcome-file>
   <welcome-file>AdminRegister.jsp</welcome-file>
   <welcome-file>AdminLogIn.jsp</welcome-file>
+  <welcome-file>UserHome.jsp</welcome-file>
    <welcome-file>AdminHome.jsp</welcome-file>
   <welcome-file>UserRegister.jsp</welcome-file>
   <welcome-file>AdminAccessCustomer.jsp</welcome-file>
@@ -15,7 +16,9 @@
     <welcome-file>CustomerBill.jsp</welcome-file>
     <welcome-file>Complaint.jsp</welcome-file>
     <welcome-file>ComplaintTable.jsp</welcome-file>
-    
+    <welcome-file>CustomerComplaintStatus.jsp</welcome-file>
+      <welcome-file>PaymentProcessForm.jsp</welcome-file>
+        <welcome-file>PaymentTable.jsp</welcome-file>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.htm</welcome-file>

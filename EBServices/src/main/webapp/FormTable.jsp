@@ -80,11 +80,11 @@ body{
                 <img class="logo" src="EBLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
-                    <li><a href="http://localhost:8080/EBServices/">Home</a></li>
+                    <li><a href="http://localhost:8080/EBServices/UserHome.jsp">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-                    <li><a href="ViewBillLogIn.jsp">View Bill</a></li> 
-                    <li><a href="">Pay Bill</a></li> 
+                   <!--  <li><a href="ViewBillLogIn.jsp">View Bill</a></li> 
+                    <li><a href="">Pay Bill</a></li>  -->
                 </ul>
             </nav>
         </header> 

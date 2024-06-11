@@ -24,24 +24,28 @@ public class CustomerRetriveBill extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session=request.getSession();
-//		try {
-//			String getEmailId=(String)session.getAttribute("emailId");
-			Services services=new Services();
-			List<Services> list=new ArrayList<Services>();
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session = request.getSession(false);
+		if (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")) {
+			Services services = new Services();
+			
+			String emailId = (String) session.getAttribute("emailId");
+			services.setEmailId(emailId);
+			
+			List<Services> list = new ArrayList<Services>();
 			try {
-				list=userBill.readForm(services);
-				//list=viewBill.readForm(services);
+				list = userBill.readForm(services);
+
 			} catch (ClassNotFoundException | SQLException e) {
-				
+
 				e.printStackTrace();
 			}
 			request.setAttribute("list", list);
-			request.getRequestDispatcher("CustomerBill.jsp").forward(request, response);	
-//		}
-//		catch(Exception e) {
-//			System.out.println(e);
-//		}
+			request.getRequestDispatcher("CustomerBill.jsp").forward(request, response);
+		} else {
+
+			response.sendRedirect("AdminLogIn.jsp");
+		}
 	}
 	
 

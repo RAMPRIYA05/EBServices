@@ -191,21 +191,21 @@ public List<Services> readParticularBill(Services services) throws ClassNotFound
 		return list;
 		}
 
-@Override
-public String ViewBillLogIn(String emailId) throws ClassNotFoundException, SQLException {
-	Connection connection=JDBCConnection.getConnection();
-
-	String logIn="select email_id from bill where email_id=?";
-	PreparedStatement prepareStatement=connection.prepareStatement(logIn);
-	prepareStatement.setString(1,emailId);
-	ResultSet rows = prepareStatement.executeQuery();
-	while(rows.next()) {
-		 emailId=rows.getString(1);
-		 
-	}
-	System.out.println(rows);
-	return emailId;
-	
-}
+//@Override
+//public String ViewBillLogIn(String emailId) throws ClassNotFoundException, SQLException {
+//	Connection connection=JDBCConnection.getConnection();
+//
+//	String logIn="select email_id from bill where email_id=?";
+//	PreparedStatement prepareStatement=connection.prepareStatement(logIn);
+//	prepareStatement.setString(1,emailId);
+//	ResultSet rows = prepareStatement.executeQuery();
+//	while(rows.next()) {
+//		 emailId=rows.getString(1);
+//		 
+//	}
+//	System.out.println(rows);
+//	return emailId;
+//	
+//}
 	
 }

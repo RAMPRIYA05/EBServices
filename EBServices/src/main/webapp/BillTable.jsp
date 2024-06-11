@@ -74,13 +74,13 @@
 
 <form action="Bill" method="post">
     <label for="emailId">Email Id:</label><br>
-    <input type="email" id="emailId" name="emailId"><br><br>
+    <input type="email" id="emailId" name="emailId" value="<%= request.getParameter("emailId") %>"  readonly><br><br>
 
     <label for="address">Address:</label><br>
-    <input type="text" id="address" name="address"><br><br>
+    <input type="text" id="address" name="address" value="<%=request.getParameter("address") %>" readonly><br><br>
 
     <label for="aadhaarNumber">Aadhaar Number:</label><br>
-    <input type="text" id="aadhaarNumber" name="aadhaarNumber"><br><br>
+    <input type="text" id="aadhaarNumber" name="aadhaarNumber" value="<%=request.getParameter("aadhaarNumber") %>" readonly ><br><br>
 
     <label for="serviceNumber">Service Number:</label><br>
     <input type="text" id="serviceNumber" name="serviceNumber"><br><br>

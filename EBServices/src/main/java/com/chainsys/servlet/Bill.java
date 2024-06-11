@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.UserBillImpl;
 import com.chainsys.model.Services;
@@ -28,7 +29,7 @@ public class Bill extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//enter customer bill from admin side
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	    Services services=new Services();
 	    String emailId=request.getParameter("emailId");
@@ -54,22 +55,13 @@ public class Bill extends HttpServlet {
 	    System.out.println(status);
 	    System.out.println("status4");
 	    services.setAddress(address);
-	    try {
-//	    	if (userBill.emailExists(emailId)) {
-//	    		System.out.println("eeee");
+	    try {	    	
 	            userBill.insertIntoBill(services);
 	            List<Services> list=new ArrayList<Services>();
 				list=userBill.readParticularBill(services);
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("CustomerAllBillTable.jsp").forward(request, response);
-	            //System.out.println("Inserted into bill table successfully.");
-	            //response.sendRedirect("CustomerBillTable.jsp");
-	            
-//	        } else {
-//	        	
-//	            System.out.println("Email does not exist in the user table.");
-//	        	
-//	        }
+	          
 	    }
 	    catch(SQLException e) {
 	    	  e.printStackTrace();
@@ -83,37 +75,29 @@ public class Bill extends HttpServlet {
 	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//doGet(request, response);
-		
-		Services services=new Services();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		List<Services> list=new ArrayList<Services>();
-		String emailId=request.getParameter("emailId");
-		services.setEmailId(emailId);
-		try {
-			if(emailId.equals(userBill.ViewBillLogIn(emailId)))
-			{
-				System.out.println("viewBill");
-			
-		
-			
-		
-			//userBill.insertIntoBill(services);
-			list=userBill.readParticularBill(services);
-			request.setAttribute("list", list);
-			RequestDispatcher dispatcher =request.getRequestDispatcher("CustomerBillTable.jsp");
-			dispatcher.forward(request, response);
-			}
-			else {
-				response.sendRedirect("ViewBillLogIn.jsp");
-			}
-		} catch (ClassNotFoundException | SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-		
-	}
+		HttpSession session = request.getSession(false); // Retrieve existing session, if any
+		if (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")) {
 
+			Services services = new Services();
+			String emailId = (String) session.getAttribute("emailId");
+			services.setEmailId(emailId);
+			List<Services> list = new ArrayList<Services>();
+
+			try {
+				list = userBill.readParticularBill(services);
+				request.setAttribute("list", list);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerBillTable.jsp");
+				dispatcher.forward(request, response);
+
+			} catch (ClassNotFoundException | SQLException e) {
+
+				e.printStackTrace();
+			}
+
+		} 
+		else {
+			response.sendRedirect("UserHome.jsp");
+		}
+	}
 }
