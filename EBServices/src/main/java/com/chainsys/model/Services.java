@@ -28,6 +28,7 @@ public class Services {
        
        double payAmount;
        String paymentStatus;
+       double totalAmount;
        
        int complaintId;
        String complaintStatus;
@@ -230,6 +231,15 @@ public class Services {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+
+	public double getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
 
 	@Override
 	public String toString() {
@@ -240,18 +250,9 @@ public class Services {
 				+ ", readingTakenDate=" + readingTakenDate + ", readingDueDate=" + readingDueDate + ", serviceType="
 				+ serviceType + ", status=" + status + ", paymentId=" + paymentId + ", paymentDate=" + paymentDate
 				+ ", accountNumber=" + accountNumber + ", payAmount=" + payAmount + ", paymentStatus=" + paymentStatus
-				+ ", complaintId=" + complaintId + ", complaintStatus=" + complaintStatus + ", description="
-				+ description + "]";
+				+ ", totalAmount=" + totalAmount + ", complaintId=" + complaintId + ", complaintStatus="
+				+ complaintStatus + ", description=" + description + "]";
 	}
-
-	
-
-	
-
-	
-	
-
-	
 	
 	
        

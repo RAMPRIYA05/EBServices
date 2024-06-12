@@ -133,6 +133,8 @@ for(Services obj:list)
                   
                     <input type="hidden" name="amount" value="<%= obj.getAmount() %>">
                     
+                    <input type="hidden" name="readingDueDate" value="<%= obj.getReadingDueDate() %>">
+                    
                     <input type="submit" name="pay" value="Pay"> 
                 </form>              
 </th>

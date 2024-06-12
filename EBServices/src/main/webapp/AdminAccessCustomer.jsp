@@ -86,7 +86,6 @@ body{
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                      <li><a href="">Generate Customer Bill</a></li>
-                   <!--   <li><a href="BillTable.jsp">Enter Customer Bill</a></li> -->
                      <li><a href="CustomerRetriveBill" method="get">View Customer Bill Details</a></li>
                 </ul>
             </nav>

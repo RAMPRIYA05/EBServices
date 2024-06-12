@@ -40,12 +40,28 @@
             padding-left:5px;
           
         }
-        button{
+        .submit{
+    margin-top:10px;
+    margin-left:90px;
+}
+
+.admin-details {
+            background-color:darkblue;
             color:white;
-            background-color: black;
-            opacity:0.9;
+            padding: 20px;
+            margin-top:50px;
+            margin-bottom:20px;
+            width:350px;
+            margin-left:450px;
+            margin-right:250px;
+            opacity:0.8;
         }
-        
+     .details{
+    
+     padding: 20px;
+     width:300px;
+     margin-buttom:10px;
+     }   
 
 .logo {
     size: 30px;
@@ -58,7 +74,7 @@ a{
 }
 body{
     background-repeat: no-repeat;
-    background-image:url(EBBackGroundImage.jpg);
+   /*  background-image:url(EBBackGroundImage.jpg); */
     background-attachment: fixed;  
     background-size: cover;
 } 
@@ -91,52 +107,54 @@ body{
             </nav>
         </header> 
 
-     <table border="1">
-    <thead>
-    <tr>
     
-    <th>Name</th>
-    <th>Email Id</th>
-    <th>Address</th>
-    <th>District</th>
-    <th>State</th>
-    <th>Phone Number</th>
-    <th>Aadhaar Number</th>
-    </tr>
-    </thead>
+   
     
-    <%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
+   
+    
+    
+  <form>
+      <div class="admin-details">
+  
+<%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
 for(Services obj:list)
 {
 %>
-<tr>
-        <td><%=obj.getName() %></td>
-        <td><%=obj.getEmailId() %></td>
-        <td><%=obj.getAddress() %></td>
-        <td><%=obj.getDistrict() %></td>
-        <td><%=obj.getState() %></td>
-        <td><%=obj.getPhoneNumber() %></td>
-        <td><%=obj.getAadhaarNumber() %></td>
+ 
+<div class="details">
+	Name:    <%=obj.getName()%><br>
+	Email Id:<%=obj.getEmailId()%><br>
+	Address: <%=obj.getAddress()%><br>
+	District:<%=obj.getDistrict()%><br>
+	State:   <%=obj.getState()%><br>
+	Phone Number:  <%=obj.getPhoneNumber()%><br>
+	Aadhaar Number:<%=obj.getAadhaarNumber()%><br>
+
+</div>
+
+<div class="submit">
+	<form action="AdminDeleteServlet" method="get">
+    <input type="hidden" name="deleteemailId" value="<%=obj.getEmailId()%>">
+    <input type="submit" style="color:brown;background-color:navajowhite;" name="delete" value="Delete">
+    </form>
+
         
-<th>
-<form action="AdminDeleteServlet" method="get">
-  <input type="hidden" name="deleteemailId" value="<%=obj.getEmailId()%>">
-  <input type="submit" style="color:brown;background-color:navajowhite;" name="delete" value="Delete">
-</form>
-</th>
         
-        
-<th>
+
 <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>">
 <a href="UpdateAdminName.jsp?editEmailId=<%=obj.getEmailId() %>">
 <button style="color:brown;background-color:navajowhite;" type="button">Update</button></a>
-</th> 
+ 
+</div>
 
-</tr>
+</div>
 <%
 }
 %>
-</table>
+
+
+  </form>
+
    <!--  <a href="AdminAccessTable.jsp">View Customer Profile</a> -->
 </body>
 </html>

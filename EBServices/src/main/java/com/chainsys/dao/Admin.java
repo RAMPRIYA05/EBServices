@@ -36,7 +36,7 @@ public class Admin implements AdminDAO {
 	public String adminLogIn(String emailId) throws ClassNotFoundException, SQLException {
 		Connection connection=JDBCConnection.getConnection();
 		String password=null;
-		String logIn="select password from user where email_id=? && user_type=?";
+		String logIn="select password from user where email_id=? && user_type=? && delete_user=0";
 		PreparedStatement prepareStatement=connection.prepareStatement(logIn);
 		prepareStatement.setString(1,emailId);
 	    prepareStatement.setString(2,"Admin");
