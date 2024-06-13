@@ -65,14 +65,48 @@ button:hover{
     background-color:green;
 }
 </style>
+<script>
+function validateForm() {
+    var email = document.forms["loginForm"]["emailId"].value;
+    var password = document.forms["loginForm"]["password"].value;
+    var emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
+   
+    if (email == "") {
+        document.getElementById("emailError").innerHTML = "Email is required";
+        return false;
+    } else if (!emailRegex.test(email)) {
+        document.getElementById("emailError").innerHTML = "Invalid email format";
+        return false;
+    } else {
+        document.getElementById("emailError").innerHTML = "";
+    }
+
+   
+    if (password == "") {
+        document.getElementById("passwordError").innerHTML = "Password is required";
+        return false;
+    } else if (password.length < 8) {
+        document.getElementById("passwordError").innerHTML = "Password must be at least 8 characters long";
+        return false;
+    } else {
+        document.getElementById("passwordError").innerHTML = "";
+    }
+
+    return true;
+}
+</script>
 
 </head>
 <body>
-<form action="UserServlet" method="post">
-   <h2>Customer LogIn</h2>
-    Email Id:<input type="email" placeholder="Enter your Email Id" name="emailId" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required><br>
-    Password:<input type="password" placeholder="Enter your Password" name="password" pattern=".{8,}" required><br>
+<form name="loginForm" action="UserServlet" method="post" onsubmit="return validateForm()">
+    <h2>Customer LogIn</h2>
+    Email Id:<br>
+    <input type="email" placeholder="Enter your Email Id" name="emailId" required><br>
+    <span id="emailError" class="error"></span><br>
+    Password:<br>
+    <input type="password" placeholder="Enter your Password" name="password" required><br>
+    <span id="passwordError" class="error"></span><br>
     <button type="submit">Submit</button><br>
 </form>
 </body>

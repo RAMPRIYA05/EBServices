@@ -15,7 +15,7 @@
             padding:0;
         }
         nav{
-           background-color:black;
+           background-color:brown;
            opacity:0.8;
            width:1250px;
            /* color:blueviolet; */
@@ -31,9 +31,7 @@
             cursor:pointer;
            
         }
-        li.hover{
-            color:red;
-        }
+        
         ul{
             
             margin-left:40%;
@@ -46,7 +44,7 @@
 }
 
 .admin-details {
-            background-color:darkblue;
+            background-color:chocolate;
             color:white;
             padding: 20px;
             margin-top:50px;
@@ -72,18 +70,10 @@ a{
     text-decoration: none;
  
 }
-body{
-    background-repeat: no-repeat;
-   /*  background-image:url(EBBackGroundImage.jpg); */
-    background-attachment: fixed;  
-    background-size: cover;
-} 
 
-.buttons-atag.active{
- 
+h2{
     color:white;
-    text-decoration: underline;
-    
+   text-align:center;
 }
 
 }
@@ -113,15 +103,16 @@ body{
    
     
     
-  <form>
-      <div class="admin-details">
-  
+<form>
+<div class="admin-details">
+<h2>Profile</h2>
 <%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
 for(Services obj:list)
 {
 %>
  
 <div class="details">
+
 	Name:    <%=obj.getName()%><br>
 	Email Id:<%=obj.getEmailId()%><br>
 	Address: <%=obj.getAddress()%><br>
@@ -152,8 +143,7 @@ for(Services obj:list)
 }
 %>
 
-
-  </form>
+</form>
 
    <!--  <a href="AdminAccessTable.jsp">View Customer Profile</a> -->
 </body>

@@ -22,7 +22,7 @@ public class Services {
        String serviceType;
        String status;
        
-       String paymentId;
+       int paymentId;
        String paymentDate;
        long accountNumber;
        
@@ -165,11 +165,13 @@ public class Services {
 		this.status = status;
 	}
     	
-	public String getPaymentId() {
+	
+
+	public int getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(String paymentId) {
+	public void setPaymentId(int paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -253,7 +255,6 @@ public class Services {
 				+ ", totalAmount=" + totalAmount + ", complaintId=" + complaintId + ", complaintStatus="
 				+ complaintStatus + ", description=" + description + "]";
 	}
+
 	
-	
-       
 }

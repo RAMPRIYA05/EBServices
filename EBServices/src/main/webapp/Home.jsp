@@ -35,33 +35,29 @@
             padding-left:5px;
           
         }
-        button{
-            color:white;
-            background-color: black;
-            opacity:0.9;
-        }
+       
         
 
 .logo {
-    size: 30px;
-    height: 60px;
+    size:30px;
+    height:60px;
 }
 a{
     color:gold;
-    text-decoration: none;
+    text-decoration:none;
  
 }
 body{
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
     background-image:url(EBBackGroundImage.jpg);
-    background-attachment: fixed;  
-    background-size: cover;
+    background-attachment:fixed;  
+    background-size:cover;
 } 
 
 .buttons-atag.active{
  
     color:white;
-    text-decoration: underline;
+    text-decoration:underline;
     
 }
 
@@ -69,34 +65,36 @@ body{
 
 .dropdown {
   color:gold;
-  position: relative;
-  display: inline-block;
+  position:relative;
+  display:inline-block;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  display:none;
+  position:absolute;
+  background-color:white;
+  min-width:160px;
+  box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
 }
 
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+  color:black;
+  padding:12px 16px;
+  text-decoration:none;
+  display:block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color:grey
+}
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  display:block;
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  background-color:white;
 }
 </style>
    
