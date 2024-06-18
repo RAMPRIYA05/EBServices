@@ -22,8 +22,8 @@ import com.chainsys.model.Services;
 @WebServlet("/AdminDeleteServlet")
 public class AdminDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static Admin admin=new Admin();
-    public List<Services> list=new ArrayList<Services>();
+	
+    
 
        
     /**
@@ -34,12 +34,12 @@ public class AdminDeleteServlet extends HttpServlet {
        
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Services services=new Services();
+		Admin admin=new Admin();
 		String delete=request.getParameter("delete");
 		if(delete!=null && delete.equals("Delete"))
 		{
@@ -47,9 +47,10 @@ public class AdminDeleteServlet extends HttpServlet {
 			services.setEmailId(emailId);
 			try {
 				admin.deleteForm(services);
-				System.out.println("Row deleted");
-				list=admin.readForm(services);
-	            System.out.println("Displayed successfully..");
+				List<Services> list;
+
+         	list=admin.readForm(services);
+	          
 	            request.setAttribute("list", list);
 	            request.getRequestDispatcher("AdminFormTable.jsp").forward(request, response);
 			}
@@ -63,19 +64,19 @@ public class AdminDeleteServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Services services=new Services();	
+		Admin admin=new Admin();
 		String name=request.getParameter("name");
 	    String emailId=request.getParameter("emailId");
 	    String password=request.getParameter("password");
 	    String address=request.getParameter("address");
 	    String district=request.getParameter("district");
 	    String state=request.getParameter("state");
-	    String phoneNumber=request.getParameter("phoneNumber");
-	    System.out.println(phoneNumber);
+	    @SuppressWarnings("unused")
+		String phoneNumber=request.getParameter("phoneNumber");
+	    
 	    long phoneNumber1=Long.parseLong(request.getParameter("phoneNumber"));
 	    String aadhaarNumber=request.getParameter("aadhaarNumber");
 	    long aadhaarNumber1=Long.parseLong(aadhaarNumber);
@@ -89,6 +90,8 @@ public class AdminDeleteServlet extends HttpServlet {
 	    services.setPhoneNumber(phoneNumber1);
 	    services.setAadhaarNumber(aadhaarNumber1);
 	    services.setUserType("Admin");
+	    List<Services> list=new ArrayList<>();
+
 	    try {
 	    	admin.updateForm(services);
 	    	

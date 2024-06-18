@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -117,18 +117,12 @@ body{
                     </div>
                  </div>
                  
-                 <div class="dropdown">SignIn
-                    <div class="dropdown-content">
-                       <a href="AdminLogIn.jsp">Admin</a>
-                       <a href="UserLogIn.jsp">Customer</a>
-                    </div>
-                 </div>
+                
+                       <a href="AdminLogIn.jsp">SignIn</a>
+                       
             </nav>
         </header> 
    
-    <!-- <center><h2>RP EB SERVICES AND ITS PAYMENT</h2></center> -->
-        <!--  <center><a href="UserRegister.jsp"><input style="color:white;background-color:black;margin-top:160px;border-color:sandybrown;padding:5px;width:100px;" type="submit" value="Customer"></a></center>
-         <center><a href="AdminRegister.jsp"><input style="color:white;background-color:black;margin-top:20px;border-color:sandybrown;padding:5px;width:100px;" type="submit" value="Admin"></a></center> -->
-         <!-- <a href="AdminRegister.jsp"><button>Admin</button></a> -->
+   
 </body>
 </html>

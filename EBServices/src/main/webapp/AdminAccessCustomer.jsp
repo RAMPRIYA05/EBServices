@@ -4,7 +4,7 @@
      <%@ page import="java.util.ArrayList" %>
        <%@ page import="java.util.List" %> 
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -61,6 +61,11 @@ a{
  
 }
 
+h4{
+    margin-left:250px;
+    padding:10px;
+}
+
 table{
 	background-color:peachpuff;
 	
@@ -69,6 +74,7 @@ table{
 }
 h2{
 margin-top:70px;
+margin-left:500px;
 }
 
 
@@ -79,36 +85,43 @@ margin-top:70px;
 
 </head>
 <body>
-
+      
     <header>
             <nav>
                 <img class="logo" src="EBLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
                     <li><a href=http://localhost:8080/EBServices/AdminHome.jsp>Home</a></li>
-                    <li><a href="">About Us</a></li>
+                    <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                     
                     <li><a href="CustomerRetriveBill" method="get">View Customer Bill Details</a></li>
+                <li><a href="PaymentProcess" method="get">Paid Bills</a></li>
+                <li><a href="AdminComplaint.jsp">Complaint</a><li>
                 </ul>
             </nav>
         </header> 
-<center><h2>Customer Details</h2></center>
+<h2>Customer Details</h2>
+
+<form action="ReadCustomerDetails" method="post"> 
+         
+         <h4>Search:<input type="email" placeholder="Enter your Search EmailId" name="emailId" required><br></h4>
+ </form>
      <table border="1">
     <thead>
     <tr>
     
-    <th>Name</th>
-    <th>Email Id</th>
-    <th>Address</th>
-    <th>District</th>
-    <th>State</th>
-    <th>Phone Number</th>
-    <th>Aadhaar Number</th>
-    <th>Delete</th>
-    <th>Update</th>
-    <th>Enter Customer Bill</th>
-    <th></th>
+    <th scope="col">Name</th>
+    <th scope="col">Email Id</th>
+    <th scope="col">Address</th>
+    <th scope="col">District</th>
+    <th scope="col">State</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Aadhaar Number</th>
+    <th scope="col">Delete</th>
+    <th scope="col">Update</th>
+    <th scope="col">Enter Customer Bill</th>
+    
     </tr>
     </thead>
     
@@ -125,7 +138,7 @@ for(Services obj:list)
         <td><%=obj.getPhoneNumber() %></td>
         <td><%=obj.getAadhaarNumber() %></td>
         
-<th>
+<th scope="col">
 <form action="UpdateCustomerDetails" method="get">
   <input type="hidden" name="deleteemailId" value="<%=obj.getEmailId()%>">
   <input type="submit" name="delete" value="Delete">
@@ -133,13 +146,13 @@ for(Services obj:list)
 </th>
         
         
-<th>
+<th scope="col">
 <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>">
 <a href="UpdateAllCustomerName.jsp?editEmailId=<%=obj.getEmailId() %>">
 <button type="button">Update</button></a>
 </th> 
 
-<th>
+<th scope="col">
 <form action="BillTable.jsp">
   
      <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>"> 

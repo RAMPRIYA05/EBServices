@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="com.chainsys.model.Services" %>
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
     <title>Electricity Bill Form</title>
     
@@ -139,12 +139,8 @@
         <option value="commercial">Commercial</option>
     </select><br><br>
 
-    <label for="status">Bill Status:</label><br>
-    <select id="status" name="status">
-        <option value="paid">Paid</option>
-        <option value="notPaid">Not Paid</option>
-        <option value="pending">Pending</option>
-    </select><br><br>
+
+   
 
     <label for="amount">Amount:</label><br>
     <input type="number" id="amount" name="amount" readonly><br><br>

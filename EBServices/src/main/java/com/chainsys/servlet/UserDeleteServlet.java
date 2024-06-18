@@ -22,8 +22,7 @@ import com.chainsys.model.Services;
 @WebServlet("/UserDeleteServlet")
 public class UserDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       public static User user=new User();
-       public List<Services> list=new ArrayList<Services>();
+      
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,21 +31,21 @@ public class UserDeleteServlet extends HttpServlet {
         
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Services services=new Services();
+		User user=new User();
+		List<Services> list;
 		String delete=request.getParameter("delete");
 		if(delete!=null && delete.equals("Delete"))
 		{
 			String emailId=request.getParameter("deleteemailId");
 			services.setEmailId(emailId);
 			try {
-				user.deleteForm(services);
-				System.out.println("Row deleted");
+			
+				
 				list=user.readForm(services);
-	            System.out.println("Displayed successfully..");
+	          
 	            request.setAttribute("list", list);
 	            request.getRequestDispatcher("FormTable.jsp").forward(request, response);
 			}
@@ -60,19 +59,18 @@ public class UserDeleteServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Services services=new Services();	
+		User user=new User();
+		List<Services> list=new ArrayList<>();
 		String name=request.getParameter("name");
 	    String emailId=request.getParameter("emailId");
 	    String password=request.getParameter("password");
 	    String address=request.getParameter("address");
 	    String district=request.getParameter("district");
 	    String state=request.getParameter("state");
-	    //String phoneNumber=request.getParameter("phoneNumber");
-	   // System.out.println(phoneNumber);
+	   
 	    long phoneNumber1=Long.parseLong(request.getParameter("phoneNumber"));
 	    String aadhaarNumber=request.getParameter("aadhaarNumber");
 	    long aadhaarNumber1=Long.parseLong(aadhaarNumber);

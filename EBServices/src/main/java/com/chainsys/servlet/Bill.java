@@ -20,17 +20,18 @@ import com.chainsys.model.Services;
 @WebServlet("/Bill")
 public class Bill extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	List<Services> list=new ArrayList<Services>();
-	UserBillImpl userBill=new UserBillImpl();
+	
+	
+	
     public Bill() {
         super();
         
     }
 
-	
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//enter customer bill from admin side
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	    Services services=new Services();
 	    String emailId=request.getParameter("emailId");
 	    int serviceNumber=Integer.parseInt(request.getParameter("serviceNumber"));
@@ -40,7 +41,7 @@ public class Bill extends HttpServlet {
 	    String readingTakenDate=request.getParameter("readingTakenDate");
 	    String readingDueDate=request.getParameter("readingDueDate");
 	    String serviceType=request.getParameter("serviceType");
-	    String status=request.getParameter("status");
+	    
 	    String address=request.getParameter("address");
 	    
 	    services.setEmailId(emailId);
@@ -51,40 +52,38 @@ public class Bill extends HttpServlet {
 	    services.setReadingTakenDate(readingTakenDate);
 	    services.setReadingDueDate(readingDueDate);
 	    services.setServiceType(serviceType);
-	    services.setStatus(status);
-	    System.out.println(status);
-	    System.out.println("status4");
+	    
+	    
 	    services.setAddress(address);
 	    try {	    	
+	    	UserBillImpl userBill=new UserBillImpl();
 	            userBill.insertIntoBill(services);
-	            List<Services> list=new ArrayList<Services>();
+	            List<Services> list;
 				list=userBill.readParticularBill(services);
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("CustomerAllBillTable.jsp").forward(request, response);
 	          
 	    }
-	    catch(SQLException e) {
+	    catch(ClassNotFoundException | SQLException e  ) {
 	    	  e.printStackTrace();
-	       } catch (ClassNotFoundException e) {
-			
-			e.printStackTrace();
-		}
+	       } 
 	}
 
 	
 	
-
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		HttpSession session = request.getSession(false); // Retrieve existing session, if any
-		if (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")) {
+		if (session != null && session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {
 
 			Services services = new Services();
 			String emailId = (String) session.getAttribute("emailId");
 			services.setEmailId(emailId);
-			List<Services> list = new ArrayList<Services>();
+			List<Services> list = new ArrayList<>();
 
 			try {
+				UserBillImpl userBill=new UserBillImpl();
 				list = userBill.readParticularBill(services);
 				request.setAttribute("list", list);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerBillTable.jsp");

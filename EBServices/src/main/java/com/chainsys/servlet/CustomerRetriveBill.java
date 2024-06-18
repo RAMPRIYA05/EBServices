@@ -13,27 +13,28 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.chainsys.dao.UserBillImpl;
-import com.chainsys.dao.ViewBill;
+
 import com.chainsys.model.Services;
 
 @WebServlet("/CustomerRetriveBill")
 public class CustomerRetriveBill extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       ViewBill viewBill=new ViewBill();
-       UserBillImpl userBill=new UserBillImpl();
+      
+       
 
-	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		HttpSession session = request.getSession(false);
-		if (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")) {
+		if (session != null && session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {
 			Services services = new Services();
 			
 			String emailId = (String) session.getAttribute("emailId");
 			services.setEmailId(emailId);
 			
-			List<Services> list = new ArrayList<Services>();
+			List<Services> list = new ArrayList<>();
 			try {
+				UserBillImpl userBill=new UserBillImpl();
 				list = userBill.readForm(services);
 
 			} catch (ClassNotFoundException | SQLException e) {
@@ -49,8 +50,6 @@ public class CustomerRetriveBill extends HttpServlet {
 	}
 	
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
+	
 
 }

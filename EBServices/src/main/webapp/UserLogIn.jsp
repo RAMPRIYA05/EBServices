@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -49,6 +49,9 @@ input[type="password"]
   
 }
 
+a{
+ margin-left:60px;
+}
 
 button{
  
@@ -58,7 +61,7 @@ button{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
+    margin-left:60px;
 }
 
 button:hover{
@@ -108,6 +111,8 @@ function validateForm() {
     <input type="password" placeholder="Enter your Password" name="password" required><br>
     <span id="passwordError" class="error"></span><br>
     <button type="submit">Submit</button><br>
+    
+    <a href="AdminRegister.jsp">or register</a>
 </form>
 </body>
 </html>

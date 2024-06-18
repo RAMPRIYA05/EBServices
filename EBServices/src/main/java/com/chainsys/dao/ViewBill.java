@@ -29,15 +29,15 @@ public class ViewBill implements ViewBillDAO{
 		prepareStatement.setString(9,services.getStatus());
 		prepareStatement.setString(10,services.getAddress());
 		
-		int rows=prepareStatement.executeUpdate();
-	    System.out.println(rows);
+		prepareStatement.executeUpdate();
+	  
 		
 	}
 
 	@Override
 	public List<Services> readForm(Services services) throws ClassNotFoundException, SQLException {
 		
-		List<Services> list=new ArrayList<Services>();
+		List<Services> list=new ArrayList<>();
 		try {
 		Connection connection = JDBCConnection.getConnection();
 		String read="SELECT email_id,service_number,aadhaar_number,amount,reading_units,reading_taken_date,reading_due_date,service_type,status,address FROM bill where email_id=?";
@@ -72,8 +72,8 @@ public class ViewBill implements ViewBillDAO{
 	         service.setStatus(status);
 	         service.setAddress(address);
 	         list.add(service);
-	        	System.out.println(list);
-	         System.out.println("priya");
+	        
+	       
 	         }
 		}
 		catch(ClassNotFoundException | SQLException e) {

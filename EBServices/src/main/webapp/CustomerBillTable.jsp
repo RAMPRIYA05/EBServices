@@ -4,7 +4,7 @@
      <%@ page import="java.util.ArrayList" %>
        <%@ page import="java.util.List" %> 
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -73,7 +73,8 @@ table{
                     <li><a href="http://localhost:8080/EBServices/UserHome.jsp">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>    
-                    
+                    <li><a href="CustomerPayment.jsp">Payment</a></li>
+                  
                 </ul>
             </nav>
       </header> 
@@ -81,20 +82,20 @@ table{
 <table border="1">
     <thead>
     <tr>   
-    <th>Email Id</th>
-    <th>Service Number</th>
-    <th>Aadhaar Number</th>
-    <th>Amount</th>
-    <th>Reading Units</th>
-    <th>Reading Taken Date</th>
-    <th>Reading Due Date</th>
-    <th>Service Type</th>
-    <th>Status</th>
-    <th>Address</th>  
-    <th>Pay</th>
-    <th>PaidStatus</th>
-    <th>Complaint</th>
-    <th>Complaint Status</th>
+    <th scope="col">Email Id</th>
+    <th scope="col">Service Number</th>
+    <th scope="col">Aadhaar Number</th>
+    <th scope="col">Amount</th>
+    <th scope="col">Reading Units</th>
+    <th scope="col">Reading Taken Date</th>
+    <th scope="col">Reading Due Date</th>
+    <th scope="col">Service Type</th>
+
+    <th scope="col">Address</th>  
+    <th scope="col">Pay</th>
+    <th scope="col">PaidStatus</th>
+    <th scope="col">Complaint</th>
+    <th scope="col">Complaint Status</th>
     </tr>
     </thead>
     
@@ -111,10 +112,10 @@ for(Services obj:list)
       <td><%=obj.getReadingTakenDate() %></td>
       <td><%=obj.getReadingDueDate() %></td>
       <td><%=obj.getServiceType() %></td>
-      <td><%=obj.getStatus() %></td>
+      <%-- <td><%=obj.getStatus() %></td> --%>
       <td><%=obj.getAddress() %></td>
       
- <th>
+ <th scope="col">
 
  <form action="PaymentProcessForm.jsp">
                     <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>">
@@ -127,14 +128,14 @@ for(Services obj:list)
                 </form>              
 </th>
 
-<th>
-<form action="PaymentProcess" method="get">
+<th scope="col">
+<form action="CustomerPaidPayment" method="post">
      <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>"> 
      <input type="submit" name="paidStatus" value="Paid Status"> 
 </form>
  </th>
  
-<th>
+<th scope="col">
 <form action="Complaint.jsp">
      <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>"> 
      <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>"> 
@@ -142,12 +143,12 @@ for(Services obj:list)
 </form>
 </th> 
 
-<th>
+<th scope="col">
 <form action="CustomerComplaintStatus" method="post">
      <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>"> 
      <input type="submit" name="complaintStatus" value="Complaint Status"> 
 </form>
-</th> 
+</th>  
  
 </tr>     
  

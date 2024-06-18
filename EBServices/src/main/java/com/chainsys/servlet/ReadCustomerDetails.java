@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.chainsys.dao.Admin;
+
 import com.chainsys.dao.User;
 import com.chainsys.model.Services;
 
@@ -21,25 +21,26 @@ import com.chainsys.model.Services;
 @WebServlet("/ReadCustomerDetails")
 public class ReadCustomerDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       public User user=new User();
+       
    
     public ReadCustomerDetails() {
         super();
         
     }
 
-	
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		HttpSession session = request.getSession(false);
-		if (session != null && session.getAttribute("loggedIn") != null && (Boolean) session.getAttribute("loggedIn")) {
+		if (session != null && session.getAttribute("loggedIn") != null && (boolean) session.getAttribute("loggedIn")) {
 			Services services = new Services();
 			String emailId = (String) session.getAttribute("emailId");
 			services.setEmailId(emailId);
-			Admin admin = new Admin();
+			
 //read all customer details
-			List<Services> list = new ArrayList<Services>();
+			List<Services> list = new ArrayList<>();
 			try {
+				User user=new User();
 				list = user.readAll(services);
 			} catch (ClassNotFoundException | SQLException e) {
 
@@ -53,10 +54,25 @@ public class ReadCustomerDetails extends HttpServlet {
 			response.sendRedirect("AdminLogIn.jsp");
 		}
 	}
-	
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doGet(request, response);
+    	Services services = new Services();
+    	 String emailId=request.getParameter("emailId");
+ 		services.setEmailId(emailId);
+ 	 
+ 	   List<Services> list = new ArrayList<>();
+ 	    try {
+			User user=new User();
+ 	    	list=user.search(services);
+ 	   } catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+		request.setAttribute("list", list);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("AdminAccessCustomer.jsp");
+		dispatcher.forward(request, response);
+ 	    }
+ 	    
 	}
 
-}
+

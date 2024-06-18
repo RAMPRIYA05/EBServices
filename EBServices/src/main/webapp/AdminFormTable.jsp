@@ -4,7 +4,9 @@
      <%@ page import="java.util.ArrayList" %>
        <%@ page import="java.util.List" %> 
 <!DOCTYPE html>
-<html>
+
+<html lang="xml:land">
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -90,7 +92,7 @@ h2{
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
                     <li><a href="http://localhost:8080/EBServices/AdminHome.jsp">Home</a></li>
-                    <li><a href="">About Us</a></li>
+                    <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                    
                 </ul>
@@ -145,6 +147,6 @@ for(Services obj:list)
 
 </form>
 
-   <!--  <a href="AdminAccessTable.jsp">View Customer Profile</a> -->
+
 </body>
 </html>

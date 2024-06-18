@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -50,12 +50,12 @@ function validateForm() {
 <fieldset>
 <form name="updateForm" action="UserDeleteServlet" method="post" onsubmit="return validateForm()">
      
-      <center>Name: <input class="details" type="text" placeholder="Enter your new name" name="name" required></center><br>
-      <center>Address: <input class="details" type="text" placeholder="Enter your new Address" name="address" required></center><br>
-      <center>District: <input class="details" type="text" placeholder="Enter your new District" name="district" required></center><br>
-      <center>State: <input class="details" type="text" placeholder="Enter your new State" name="state" required></center><br>
-      <center>Phone Number: <input class="details" type="tel" placeholder="Enter your new phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required></center><br>
-      <center>Aadhaar Number: <input class="details" type="number" placeholder="Enter your new aadhaarNumber" name="aadhaarNumber" pattern="[0-9]{12}" required></center><br>
+      Name: <input class="details" type="text" placeholder="Enter your new name" name="name" required><br>
+      Address: <input class="details" type="text" placeholder="Enter your new Address" name="address" required><br>
+      District: <input class="details" type="text" placeholder="Enter your new District" name="district" required><br>
+      State: <input class="details" type="text" placeholder="Enter your new State" name="state" required><br>
+      Phone Number: <input class="details" type="tel" placeholder="Enter your new phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required><br>
+      Aadhaar Number: <input class="details" type="number" placeholder="Enter your new aadhaarNumber" name="aadhaarNumber" pattern="[0-9]{12}" required><br>
       <input type="hidden" name="emailId" value="<%=request.getParameter("editEmailId") %>">
      <input type="submit" style="color:brown;background-color:navajowhite;border:none;padding:5px 15px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin:4px 2px;cursor:pointer;"  name="update">
 </form>

@@ -19,15 +19,15 @@ import com.chainsys.model.Services;
 @WebServlet("/UpdateCustomerDetails")
 public class UpdateCustomerDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	 public static User user=new User();
-     public List<Services> list=new ArrayList<Services>();
+	
+   
     
     public UpdateCustomerDetails() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
-	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Services services=new Services();
 		String delete=request.getParameter("delete");
@@ -36,10 +36,12 @@ public class UpdateCustomerDetails extends HttpServlet {
 			String emailId=request.getParameter("deleteemailId");
 			services.setEmailId(emailId);
 			try {
+				List<Services> list;
+				User user=new User();
 				user.deleteForm(services);
-				System.out.println("Row deleted");
+				
 				list=user.readAll(services);
-	            System.out.println("Displayed successfully..");
+	           
 	            request.setAttribute("list", list);
 	            request.getRequestDispatcher("AdminAccessCustomer.jsp").forward(request, response);
 			}
@@ -53,9 +55,7 @@ public class UpdateCustomerDetails extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Services services=new Services();	
 		String name=request.getParameter("name");
@@ -64,7 +64,7 @@ public class UpdateCustomerDetails extends HttpServlet {
 	    String address=request.getParameter("address");
 	    String district=request.getParameter("district");
 	    String state=request.getParameter("state");
-	   // String phoneNumber=request.getParameter("phoneNumber");
+	   
 	    long phoneNumber1=Long.parseLong(request.getParameter("phoneNumber"));
 	    String aadhaarNumber=request.getParameter("aadhaarNumber");
 	    long aadhaarNumber1=Long.parseLong(aadhaarNumber);
@@ -78,7 +78,9 @@ public class UpdateCustomerDetails extends HttpServlet {
 	    services.setPhoneNumber(phoneNumber1);
 	    services.setAadhaarNumber(aadhaarNumber1);
 	    services.setUserType("User");
+	    List<Services> list=new ArrayList<>();
 	    try {
+	    	User user=new User();
 	    	user.updateForm(services);
 	    	
 	    }
@@ -86,6 +88,8 @@ public class UpdateCustomerDetails extends HttpServlet {
 	    	e.printStackTrace();
 	    }
 	    try {
+	    	
+	    	User user=new User();
 			list=user.readAll(services);	
 			
 	        

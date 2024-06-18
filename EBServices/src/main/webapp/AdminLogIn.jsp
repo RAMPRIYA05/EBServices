@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin LogIn</title>
@@ -48,7 +49,9 @@ input[type="password"]
   
 }
 
-
+a{
+ margin-left:60px;
+}
 button{
     background-color:darkblue;
     color: white;
@@ -56,7 +59,7 @@ button{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
+    margin-left:60px;
 }
 
 button:hover{
@@ -74,12 +77,13 @@ button:hover{
 
 <form action="AdminServlet" method="post" onsubmit="return validateForm()">
 <fieldset>
-    <h2>Admin LogIn</h2>
+    <h2>LogIn</h2>
     Email Id:<input type="email" placeholder="Enter your Email Id" name="emailId" id="emailId" required><br>
     <span id="emailError" class="error"></span><br>
     Password:<input type="password" placeholder="Enter your Password" name="password" id="password" required><br>
     <span id="passwordError" class="error"></span><br>
     <button type="submit">Submit</button><br>
+    <a href="AdminRegister.jsp">or register</a>
 </fieldset>
 </form>
 

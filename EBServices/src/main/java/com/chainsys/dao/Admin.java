@@ -12,7 +12,7 @@ import com.chainsys.util.JDBCConnection;
 
 public class Admin implements AdminDAO {
 	Services services=new Services();
-	//List<Services> list=new ArrayList<>();
+
 	@Override
 	public void adminRegister(Services services) throws ClassNotFoundException, SQLException {
 		Connection connection=JDBCConnection.getConnection();
@@ -27,8 +27,8 @@ public class Admin implements AdminDAO {
 		prepareStatement.setLong(7,services.getPhoneNumber());
 		prepareStatement.setLong(8,services.getAadhaarNumber());
 		prepareStatement.setString(9,services.getUserType());
-	    int rows=prepareStatement.executeUpdate();
-	    System.out.println(rows);
+	    prepareStatement.executeUpdate();
+	   
 		
 	}
 
@@ -45,7 +45,7 @@ public class Admin implements AdminDAO {
 			 password=rows.getString(1);
 			 
 		}
-		System.out.println(rows);
+		
 		return password;
 
 	}
@@ -54,18 +54,19 @@ public class Admin implements AdminDAO {
 	public List<Services> readForm(Services services) throws ClassNotFoundException, SQLException {
         
 		List<Services> list=new ArrayList<>();
-		try {
 		Connection connection = JDBCConnection.getConnection();
+		try {
+		
   	   
   	    String read="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where email_id=? && delete_user=0";
   	    PreparedStatement prepareStatement = connection.prepareStatement(read);
   	    prepareStatement.setString(1,services.getEmailId());
         ResultSet rows = prepareStatement.executeQuery();
        
-        System.out.println("priya");
+       
         while(rows.next())
         {
-        	System.out.println("s");
+        	
         	 String name=rows.getString(1);
              String emailId=rows.getString(2);
              String password=rows.getString(3);
@@ -88,10 +89,10 @@ public class Admin implements AdminDAO {
              service.setAadhaarNumber(aadhaarNumber1);  
         	
         	list.add(service);
-        	System.out.println(list);
+        	
         }	
 		}
-		catch(ClassNotFoundException | SQLException e) {
+		catch(SQLException e) {
 			e.printStackTrace();
 		}
         
@@ -106,8 +107,8 @@ public class Admin implements AdminDAO {
 			Connection connection=JDBCConnection.getConnection();
 			PreparedStatement prepareStatement=connection.prepareStatement(delete);
 			prepareStatement.setString(1,services.getEmailId());
-			int rows=prepareStatement.executeUpdate();
-			System.out.println(rows+"Deleted");
+			prepareStatement.executeUpdate();
+		
 		}
 		catch(Exception e)
 		{
@@ -121,7 +122,7 @@ public class Admin implements AdminDAO {
 	public void updateForm(Services services) throws ClassNotFoundException, SQLException {
 		
 		Connection connection=JDBCConnection.getConnection();
-		System.out.println(services.getEmailId());
+		
 		String update="UPDATE user SET name=?,address=?,district=?,state=?,phone_number=?,aadhaar_number=? WHERE email_id=?";
 		PreparedStatement prepareStatement=connection.prepareStatement(update);
 		prepareStatement.setString(1,services.getName());
@@ -131,8 +132,8 @@ public class Admin implements AdminDAO {
 		prepareStatement.setLong(5,services.getPhoneNumber());
 		prepareStatement.setLong(6,services.getAadhaarNumber());
 		prepareStatement.setString(7,services.getEmailId());
-		int rows=prepareStatement.executeUpdate();
-		System.out.println(rows+"Updated");
+		prepareStatement.executeUpdate();
+		
 	}
 	
 	

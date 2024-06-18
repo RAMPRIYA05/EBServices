@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Admin Registration</title>
@@ -31,6 +32,7 @@ h2 {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="email"],
 input[type="password"],
 input[type="tel"] {

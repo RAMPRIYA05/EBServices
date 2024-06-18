@@ -3,7 +3,6 @@ package com.chainsys.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-
 import com.chainsys.model.Services;
 
 public interface UserDAO {
@@ -12,5 +11,6 @@ public interface UserDAO {
     public List<Services> readForm(Services services) throws ClassNotFoundException, SQLException;
     public void deleteForm(Services services) throws ClassNotFoundException, SQLException;
     public void updateForm(Services services) throws ClassNotFoundException, SQLException;
-	List<Services> readAll(Services services) throws ClassNotFoundException, SQLException;
+	public List<Services> readAll(Services services) throws ClassNotFoundException, SQLException;
+	public List<Services> search(Services services) throws ClassNotFoundException, SQLException;
 }

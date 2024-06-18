@@ -1,6 +1,6 @@
 package com.chainsys.model;
 
-import java.sql.Date;
+
 
 public class Services {
        String name;
@@ -37,10 +37,6 @@ public class Services {
     	   
        }
        
-	public Services(String name, String emailId, String password, String address, String district, String state,
-			long phoneNumber1, long aadhaarNumber1) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public String getName() {
 		return name;

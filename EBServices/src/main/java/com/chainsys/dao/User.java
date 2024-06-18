@@ -14,10 +14,11 @@ import com.chainsys.util.JDBCConnection;
 
 
 
+
 public class User implements UserDAO {
 
 	Services services=new Services();
-	//List<Services> list=new ArrayList<>();
+	
 	@Override
 	public void userRegister(Services services) throws ClassNotFoundException, SQLException {
 		Connection connection=JDBCConnection.getConnection();
@@ -32,15 +33,15 @@ public class User implements UserDAO {
 		prepareStatement.setLong(7,services.getPhoneNumber());
 		prepareStatement.setLong(8,services.getAadhaarNumber());
 		prepareStatement.setString(9,services.getUserType());
-	    int rows=prepareStatement.executeUpdate();
-	    System.out.println(rows);
+	    prepareStatement.executeUpdate();
+	    
 	}
 
 	@Override
 	public String userLogIn(String emailId) throws ClassNotFoundException, SQLException {
 		Connection connection=JDBCConnection.getConnection();
 		String password=null;
-		String logIn="select password from user where email_id=? && user_type=?";
+		String logIn="select password from user where email_id=? && user_type=? && delete_user=0";
 		PreparedStatement prepareStatement=connection.prepareStatement(logIn);
 		prepareStatement.setString(1,emailId);
 	    prepareStatement.setString(2,"User");
@@ -49,14 +50,14 @@ public class User implements UserDAO {
 			 password=rows.getString(1);
 			 
 		}
-		System.out.println(rows);
+		
 		return password;
 	}
 
 	@Override
 	public List<Services> readForm(Services services) throws ClassNotFoundException, SQLException {
 		
-		List<Services> list=new ArrayList<Services>();
+		List<Services> list=new ArrayList<>();
 		try {
 		Connection connection = JDBCConnection.getConnection();
   	    String read="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where email_id=? && delete_user=0";
@@ -65,7 +66,7 @@ public class User implements UserDAO {
         ResultSet rows = prepareStatement.executeQuery();
         while(rows.next())
         {
-        	System.out.println("out");
+        	
             String name=rows.getString(1);
             String emailId=rows.getString(2);
             String password=rows.getString(3);
@@ -86,10 +87,9 @@ public class User implements UserDAO {
             service.setState(state);
             service.setPhoneNumber(phoneNumber1);
             service.setAadhaarNumber(aadhaarNumber1);     	
-            //Services service = new Services(name,emailId,password,address,district,state,phoneNumber1,aadhaarNumber1);
-//            
+          
         	list.add(service);
-        	System.out.println(list);
+        	
         }
        
 		}
@@ -102,7 +102,7 @@ public class User implements UserDAO {
 	@Override
 	public List<Services> readAll(Services services) throws ClassNotFoundException, SQLException {
 		
-		List<Services> list=new ArrayList<Services>();
+		List<Services> list=new ArrayList<>();
 		try {
 		Connection connection = JDBCConnection.getConnection();
   	    String read="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where user_type=? && delete_user=0";
@@ -111,7 +111,7 @@ public class User implements UserDAO {
         ResultSet rows = prepareStatement.executeQuery();
         while(rows.next())
         {
-        	System.out.println("out");
+        	
             String name=rows.getString(1);
             String emailId=rows.getString(2);
             String password=rows.getString(3);
@@ -132,10 +132,8 @@ public class User implements UserDAO {
             service.setState(state);
             service.setPhoneNumber(phoneNumber1);
             service.setAadhaarNumber(aadhaarNumber1);     	
-            //Services service = new Services(name,emailId,password,address,district,state,phoneNumber1,aadhaarNumber1);
-//            
         	list.add(service);
-        	System.out.println(list);
+        
         }
        
 		}
@@ -149,15 +147,15 @@ public class User implements UserDAO {
 	@Override
 	public void deleteForm(Services services) throws ClassNotFoundException, SQLException {
 		
-		//String delete="DELETE from user where email_id=?";
+		
 		String delete="update user set delete_user=true where email_id=?";
 		try 
 		{
 			Connection connection=JDBCConnection.getConnection();
 			PreparedStatement prepareStatement=connection.prepareStatement(delete);
 			prepareStatement.setString(1,services.getEmailId());
-			int rows=prepareStatement.executeUpdate();
-			System.out.println(rows+"Deleted");
+			prepareStatement.executeUpdate();
+			
 		}
 		catch(Exception e)
 		{
@@ -171,7 +169,7 @@ public class User implements UserDAO {
 	@Override
 	public void updateForm(Services services) throws ClassNotFoundException, SQLException {
 		Connection connection=JDBCConnection.getConnection();
-		System.out.println(services.getEmailId());
+		
 		String update="UPDATE user SET name=?,address=?,district=?,state=?,phone_number=?,aadhaar_number=? WHERE email_id=?";
 		PreparedStatement prepareStatement=connection.prepareStatement(update);
 		prepareStatement.setString(1,services.getName());
@@ -182,8 +180,46 @@ public class User implements UserDAO {
 		prepareStatement.setLong(5,services.getPhoneNumber());
 		prepareStatement.setLong(6,services.getAadhaarNumber());
 		prepareStatement.setString(7,services.getEmailId());
-		int rows=prepareStatement.executeUpdate();
-		System.out.println(rows+"Updated");
+		prepareStatement.executeUpdate();
+		
+	}
+
+	@Override
+	public List<Services> search(Services services) throws ClassNotFoundException, SQLException {
+		
+		Connection connection=JDBCConnection.getConnection();
+		List<Services> list=new ArrayList<>();
+		String search="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where email_id=?";
+		PreparedStatement prepareStatement = connection.prepareStatement(search);
+		prepareStatement.setString(1,services.getEmailId());
+		ResultSet rows = prepareStatement.executeQuery();
+		 while(rows.next()) {
+
+	            String name=rows.getString(1);
+	            String emailId=rows.getString(2);
+	            String password=rows.getString(3);
+	            String address=rows.getString(4);
+	            String district=rows.getString(5);
+	            String state=rows.getString(6);
+	            String phoneNumber=rows.getString(7);
+	            long phoneNumber1=Long.parseLong(phoneNumber);
+	            
+	            String aadhaarNumber=rows.getString(8);
+	            long aadhaarNumber1=Long.parseLong(aadhaarNumber);
+	            Services service =new Services();
+	            service.setName(name);
+	            service.setEmailId(emailId);
+	            service.setPassword(password);
+	            service.setAddress(address);
+	            service.setDistrict(district);
+	            service.setState(state);
+	            service.setPhoneNumber(phoneNumber1);
+	            service.setAadhaarNumber(aadhaarNumber1);     	
+	          
+	        	list.add(service);
+		 }
+		return list;
+		
 	}
 	
 	

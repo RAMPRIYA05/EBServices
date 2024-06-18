@@ -1,12 +1,12 @@
 package com.chainsys.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
+import java.sql.SQLException;
+
+
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,9 +24,7 @@ import com.chainsys.model.Services;
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static User user=new User();
-	public List<Services> list=new ArrayList<Services>();
-    public static Services services=new Services();
+	
 
        
     /**
@@ -37,29 +35,24 @@ public class UserServlet extends HttpServlet {
 
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//       response.getWriter().append("Served at: ").append(request.getContextPath());
-//		
-//		PrintWriter out=response.getWriter();
-//		HttpSession session=request.getSession(false);
-//		if(session!=null) {
+      
 			
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
+		
 		HttpSession session = request.getSession(true);
 		
 	    Services services=new Services();
+	    User user=new User();
+	   
 	    String name=request.getParameter("name");
 	    String emailId=request.getParameter("emailId");
 	    String password=request.getParameter("password");
 	    String address=request.getParameter("address");
 	    String district=request.getParameter("district");
 	    String state=request.getParameter("state");
-	    //String phoneNumber=request.getParameter("phoneNumber");
-	    //long phoneNumber1=Long.parseLong(phoneNumber);
+	   
 	    long phoneNumber1=Long.parseLong(request.getParameter("phoneNumber"));
 	    String aadhaarNumber=request.getParameter("aadhaarNumber");
 	    long aadhaarNumber1=Long.parseLong(aadhaarNumber);
@@ -89,10 +82,9 @@ public class UserServlet extends HttpServlet {
 		
 	}
 
-	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+        
 		
 			
 		
@@ -100,7 +92,7 @@ public class UserServlet extends HttpServlet {
 		String emailId=request.getParameter("emailId");
 		String password=request.getParameter("password");
 		services.setEmailId(emailId);
-		
+		 User user=new User();
 		try {
 			String password1=user.userLogIn(emailId);
 			if(password.equals(password1))
@@ -111,7 +103,7 @@ public class UserServlet extends HttpServlet {
 	            
 				
 			
-				System.out.println("Successfully LoggedIn");
+				
 				response.sendRedirect("UserHome.jsp");
 
 				

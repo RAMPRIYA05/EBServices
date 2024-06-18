@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -96,20 +96,20 @@ function validateForm() {
 <fieldset>
 <form name="updateForm" action="UpdateCustomerDetails" method="post" onsubmit="return validateForm()">
       <h2>Update Form</h2>
-      <center>Name:<br>  <input class="details" type="text" placeholder="Enter your new name" name="name" required></center>
+      Name:<br>  <input class="details" type="text" placeholder="Enter your new name" name="name" required>
       <span id="nameError" class="error"></span><br>
-      <center>Address:<br> <input class="details" type="text" placeholder="Enter your new Address" name="address" required></center>
+      Address:<br> <input class="details" type="text" placeholder="Enter your new Address" name="address" required>
       <span id="addressError" class="error"></span><br>
-      <center>District:<br> <input class="details" type="text" placeholder="Enter your new District" name="district" required></center>
+      District:<br> <input class="details" type="text" placeholder="Enter your new District" name="district" required>
       <span id="districtError" class="error"></span><br>
-      <center>State:<br> <input class="details" type="text" placeholder="Enter your new State" name="state" required></center>
+      State:<br> <input class="details" type="text" placeholder="Enter your new State" name="state" required>
       <span id="stateError" class="error"></span><br>
-      <center>Phone Number:<br> <input class="details" type="number" placeholder="Enter your new phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required></center>
+      Phone Number:<br> <input class="details" type="number" placeholder="Enter your new phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
       <span id="phoneNumberError" class="error"></span><br>
-      <center>Aadhaar Number:<br> <input class="details" type="number" placeholder="Enter your new aadhaarNumber" name="aadhaarNumber" pattern="[0-9]{12}" required></center>
+      Aadhaar Number:<br> <input class="details" type="number" placeholder="Enter your new aadhaarNumber" name="aadhaarNumber" pattern="[0-9]{12}" required>
       <span id="aadhaarNumberError" class="error"></span><br>
       
-      <center><input type="hidden" name="emailId" value="<%=request.getParameter("editEmailId") %>">
+      <input type="hidden" name="emailId" value="<%=request.getParameter("editEmailId") %>">
       <input type="submit" style="color:brown;background-color:white;border:none;padding:5px 15px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin:4px 2px;cursor:pointer;"  name="update">
 </form>
 </fieldset>

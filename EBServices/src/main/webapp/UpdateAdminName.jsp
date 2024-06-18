@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -11,13 +11,13 @@
 <fieldset>
 <form name="adminDeleteForm" action="AdminDeleteServlet" method="post" onsubmit="return validateForm()">
      
-    <center>Name: <input type="text" placeholder="Enter your new name" name="name" required></center><br>
-    <!-- <center>EmailId: <input class="details" type="text" placeholder="Enter your new emailId" name="emailId" required></center><br> -->
-    <center>Address: <input type="text" placeholder="Enter your new Address" name="address" required></center><br>
-    <center>District: <input type="text" placeholder="Enter your new District" name="district" required></center><br>
-    <center>State: <input type="text" placeholder="Enter your new State" name="state" required></center><br>
-    <center>Phone Number: <input type="text" placeholder="Enter your new phoneNumber" name="phoneNumber" required></center><br>
-    <center>Aadhaar Number: <input type="text" placeholder="Enter your new aadhaarNumber" name="aadhaarNumber" required></center><br>
+    Name: <input type="text" placeholder="Enter your new name" name="name" required><br>
+
+    Address: <input type="text" placeholder="Enter your new Address" name="address" required><br>
+    District: <input type="text" placeholder="Enter your new District" name="district" required><br>
+    State: <input type="text" placeholder="Enter your new State" name="state" required><br>
+    Phone Number: <input type="text" placeholder="Enter your new phoneNumber" name="phoneNumber" required><br>
+   Aadhaar Number: <input type="text" placeholder="Enter your new aadhaarNumber" name="aadhaarNumber" required><br>
     <input type="hidden" name="emailId" value="<%=request.getParameter("editEmailId") %>">
     <input type="submit" style="color:brown;background-color:navajowhite;border:none;padding:5px 15px;text-align:center;text-decoration:none;display:inline-block;font-size:16px;margin:4px 2px;cursor:pointer;" name="update">
 </form>

@@ -1,12 +1,7 @@
 package com.chainsys.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,20 +19,20 @@ import com.chainsys.model.Services;
 @WebServlet("/AdminServlet")
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static Admin admin=new Admin();
-	public static List<Services> list=new ArrayList<>();
-    public static Services services=new Services();
+	
+
+   
    
     public AdminServlet() {
         super();
         
     }
 
-	
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
+		
+		
 		HttpSession session = request.getSession(true);
 		
 		Services services=new Services();
@@ -47,7 +42,7 @@ public class AdminServlet extends HttpServlet {
 	    String address=request.getParameter("address");
 	    String district=request.getParameter("district");
 	    String state=request.getParameter("state");
-	   // String phoneNumber=request.getParameter("phoneNumber");
+	   
 	    long phoneNumber1=Long.parseLong(request.getParameter("phoneNumber"));
 	    String aadhaarNumber=request.getParameter("aadhaarNumber");
 	    long aadhaarNumber1=Long.parseLong(aadhaarNumber);
@@ -63,8 +58,9 @@ public class AdminServlet extends HttpServlet {
 	    services.setAadhaarNumber(aadhaarNumber1);
 	    services.setUserType("Admin");
 	    try {
+	    	Admin admin=new Admin();
 			admin.adminRegister(services);
-			session.setAttribute("admin", services);
+			session.setAttribute("admin",services);
 			response.sendRedirect("AdminLogIn.jsp");
 		} 
 	    catch (ClassNotFoundException | SQLException e) 
@@ -77,55 +73,88 @@ public class AdminServlet extends HttpServlet {
 		}
 		
 	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		Services services=new Services();
-		String emailId=request.getParameter("emailId");
-		String password=request.getParameter("password");
-		
-		services.setEmailId(emailId);
-		services.setPassword(password);
-		services.setUserType("Admin");
-		
-		try {
-			String password1=admin.adminLogIn(emailId);
-			if(password.equals(password1))
-			{
-				HttpSession session = request.getSession(true); 
-	            session.setAttribute("emailId", emailId);
-	            session.setAttribute("loggedIn", true);
-	            
-				System.out.println("Successfully LoggedIn");
-				response.sendRedirect("AdminHome.jsp");
-				System.out.println("Home");
-				
-//				List<Services> list=new ArrayList<Services>();
-//				list=admin.readForm(services);
-//				request.setAttribute("list", list);				
-//			    RequestDispatcher dispatcher =request.getRequestDispatcher("AdminFormTable.jsp");
-//				dispatcher.forward(request, response);
-				
-				
-				
-				
-			}
-			else
-			{
-				response.sendRedirect("AdminLogIn.jsp");
-			}
-			
-		}
-		catch(ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-	}
+		/*
+		 * @Override protected void doPost(HttpServletRequest request,
+		 * HttpServletResponse response) throws ServletException, IOException {
+		 * 
+		 * 
+		 * 
+		 * Services services=new Services();
+		 * 
+		 * String emailId=request.getParameter("emailId"); String
+		 * password=request.getParameter("password");
+		 * 
+		 * services.setEmailId(emailId); services.setPassword(password);
+		 * services.setUserType("Admin");
+		 * 
+		 * try { Admin admin=new Admin(); String password1=admin.adminLogIn(emailId);
+		 * if(password.equals(password1)) { HttpSession session =
+		 * request.getSession(true); session.setAttribute("emailId", emailId);
+		 * session.setAttribute("loggedIn", true);
+		 * 
+		 * 
+		 * response.sendRedirect("AdminHome.jsp");
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 * } else { response.sendRedirect("AdminLogIn.jsp"); }
+		 * 
+		 * } catch(ClassNotFoundException | SQLException e) { e.printStackTrace(); }
+		 * 
+		 * 
+		 * 
+		 * 
+		 * }
+		 */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String emailId = request.getParameter("emailId");
+        String password = request.getParameter("password");
+
+        
+        String userType = determineUserType(emailId);
+
+        if (userType != null) {
+            HttpSession session = request.getSession(true);
+            session.setAttribute("emailId", emailId);
+            session.setAttribute("loggedIn", true);
+
+            if (userType.equals("admin")) {
+                response.sendRedirect("AdminHome.jsp");
+            } else if (userType.equals("user")) {
+                response.sendRedirect("UserHome.jsp");
+            } else {
+               
+                response.sendRedirect("AdminLogIn.jsp"); 
+            }
+        } else {
+            
+            response.sendRedirect("AdminLogIn.jsp"); 
+        }
+    }
+
+    private String determineUserType(String emailId) {
+        try {
+            Admin admin = new Admin();
+            String password1 = admin.adminLogIn(emailId);
+            if (password1 != null) {
+                return "admin";
+            }
+
+            User user = new User();
+            String password2 = user.userLogIn(emailId);
+            if (password2 != null) {
+                return "user";
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+           
+        }
+
+        return null; 
+    }
 
 	
 }
