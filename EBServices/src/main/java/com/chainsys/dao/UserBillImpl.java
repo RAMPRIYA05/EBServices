@@ -150,11 +150,51 @@ public void deleteBill(Services services) throws ClassNotFoundException, SQLExce
 	String delete="delete from bill where service_number IN(select p.service_number from payment p where p.payment_status=1)";
 	Connection connection=JDBCConnection.getConnection();
 	PreparedStatement prepareStatement=connection.prepareStatement(delete);
-	//prepareStatement.setInt(1,services.getServiceNumber());
-	//prepareStatement.setString(2,services.getPaymentStatus());
+	
 	prepareStatement.executeUpdate();
 
 	
+}
+
+
+@Override
+public List<Services> search(Services services) throws ClassNotFoundException, SQLException {
+
+	Connection connection=JDBCConnection.getConnection();
+	List<Services> list=new ArrayList<>();
+	String search="SELECT email_id,service_number,aadhaar_number,amount,reading_units,reading_taken_date,reading_due_date,service_type,address FROM bill where email_id=?";
+	PreparedStatement prepareStatement = connection.prepareStatement(search);
+	prepareStatement.setString(1,services.getEmailId());
+	ResultSet rows = prepareStatement.executeQuery();
+	 while(rows.next()) {
+		 String emailId=rows.getString(1);
+		 String serviceNumber=rows.getString(2);
+		 int serviceNumber1=Integer.parseInt(serviceNumber);
+		 String aadhaarNumber=rows.getString(3);
+         long aadhaarNumber1=Long.parseLong(aadhaarNumber);
+         String amount=rows.getString(4);
+         double amount1=Double.parseDouble(amount);
+         String readingUnits=rows.getString(5);
+         double readingUnits1=Double.parseDouble(readingUnits);
+         String readingTakenDate=rows.getString(6);
+         String readingDueDate=rows.getString(7);
+         String serviceType=rows.getString(8);
+         String address=rows.getString(9);
+         
+         Services service =new Services();
+         service.setEmailId(emailId);
+         service.setServiceNumber(serviceNumber1);
+         service.setAadhaarNumber(aadhaarNumber1);
+         service.setAmount(amount1);
+         service.setReadingUnits(readingUnits1);
+         service.setReadingTakenDate(readingTakenDate);
+         service.setReadingDueDate(readingDueDate);
+         service.setServiceType(serviceType);
+         service.setAddress(address);
+         list.add(service);
+	 }
+	
+	return list;
 }
 
   

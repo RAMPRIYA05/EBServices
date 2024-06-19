@@ -11,7 +11,6 @@ public interface PaymentDAO {
 	
 	 public void paymentStatus(Services services) throws ClassNotFoundException, SQLException;
 	List<Services> readParticularForm(Services services) throws ClassNotFoundException, SQLException;
-		//List<Services> readUnPaidPayment(Services services) throws ClassNotFoundException, SQLException;
-		//List<Services> readParticularPayment(Services services) throws ClassNotFoundException, SQLException;
+		
 	 
 }

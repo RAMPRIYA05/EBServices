@@ -5,7 +5,7 @@
      <%@ page import="java.util.List" %>
     
 <!DOCTYPE html>
-<html>
+<html lang="xml:land">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -70,7 +70,8 @@ table{
                     <li><a href="http://localhost:8080/EBServices/AdminHome.jsp">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>    
-                    
+                     <li><a href="AdminComplaint.jsp">Complaint</a><li>
+                  <li><a href="ReadCustomerDetails" method="get">Customer Details</a></li>
                </ul>
             </nav>
       </header> 

@@ -72,36 +72,7 @@ public class Payment implements PaymentDAO {
       
 		return list;
 	}
-	//@Override
-	/*
-	 * public List<Services> readParticularPayment(Services services)throws
-	 * ClassNotFoundException, SQLException {
-	 * 
-	 * List<Services> list=new ArrayList<>(); try { Connection connection =
-	 * JDBCConnection.getConnection(); String
-	 * read="SELECT service_number,payment_id,payment_date,amount,account_number,pay_amount,reading_due_date,total_amount FROM payment"
-	 * ; PreparedStatement prepareStatement = connection.prepareStatement(read);
-	 * ResultSet rows = prepareStatement.executeQuery();
-	 * 
-	 * while(rows.next()) {
-	 * 
-	 * 
-	 * Services service =new Services();
-	 * 
-	 * service.setServiceNumber(rows.getInt(1));
-	 * service.setPaymentId(rows.getInt(2));
-	 * service.setPaymentDate(rows.getString(3));
-	 * service.setAmount(rows.getDouble(4));
-	 * service.setAccountNumber(rows.getLong(5));
-	 * service.setPayAmount(rows.getDouble(6));
-	 * service.setReadingDueDate(rows.getString(7));
-	 * service.setTotalAmount(rows.getDouble(8)); list.add(service);
-	 * 
-	 * } } catch(ClassNotFoundException | SQLException e) { e.printStackTrace(); }
-	 * 
-	 * 
-	 * return list; }
-	 */
+	
 	
 	@Override
 	public List<Services> readParticularForm(Services services)throws ClassNotFoundException, SQLException {

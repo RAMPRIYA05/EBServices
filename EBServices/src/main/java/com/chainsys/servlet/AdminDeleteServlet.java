@@ -74,8 +74,7 @@ public class AdminDeleteServlet extends HttpServlet {
 	    String address=request.getParameter("address");
 	    String district=request.getParameter("district");
 	    String state=request.getParameter("state");
-	    @SuppressWarnings("unused")
-		String phoneNumber=request.getParameter("phoneNumber");
+	   
 	    
 	    long phoneNumber1=Long.parseLong(request.getParameter("phoneNumber"));
 	    String aadhaarNumber=request.getParameter("aadhaarNumber");

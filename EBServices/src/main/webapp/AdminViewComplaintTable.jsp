@@ -67,7 +67,7 @@ table{
                     <li><a href="http://localhost:8080/EBServices/AdminHome.jsp">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-     
+                    <li><a href="AdminComplaint.jsp">Complaint</a><li>
                    
                 </ul>
             </nav>

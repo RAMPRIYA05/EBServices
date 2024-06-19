@@ -73,45 +73,11 @@ public class AdminServlet extends HttpServlet {
 		}
 		
 	
-		/*
-		 * @Override protected void doPost(HttpServletRequest request,
-		 * HttpServletResponse response) throws ServletException, IOException {
-		 * 
-		 * 
-		 * 
-		 * Services services=new Services();
-		 * 
-		 * String emailId=request.getParameter("emailId"); String
-		 * password=request.getParameter("password");
-		 * 
-		 * services.setEmailId(emailId); services.setPassword(password);
-		 * services.setUserType("Admin");
-		 * 
-		 * try { Admin admin=new Admin(); String password1=admin.adminLogIn(emailId);
-		 * if(password.equals(password1)) { HttpSession session =
-		 * request.getSession(true); session.setAttribute("emailId", emailId);
-		 * session.setAttribute("loggedIn", true);
-		 * 
-		 * 
-		 * response.sendRedirect("AdminHome.jsp");
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * } else { response.sendRedirect("AdminLogIn.jsp"); }
-		 * 
-		 * } catch(ClassNotFoundException | SQLException e) { e.printStackTrace(); }
-		 * 
-		 * 
-		 * 
-		 * 
-		 * }
-		 */
+		
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String emailId = request.getParameter("emailId");
-        String password = request.getParameter("password");
+        
 
         
         String userType = determineUserType(emailId);

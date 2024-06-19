@@ -12,4 +12,6 @@ public interface UserBill {
 	 public List<Services> readForm(Services services) throws ClassNotFoundException, SQLException;
 	 public List<Services> readParticularBill(Services services) throws ClassNotFoundException, SQLException;
      public void deleteBill(Services services) throws ClassNotFoundException, SQLException;
+
+	public List<Services> search(Services services) throws ClassNotFoundException, SQLException;
 }

@@ -8,7 +8,7 @@ public class JDBCConnection {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException  
 	{
 		Connection getConnection=getConnection();
-		System.out.println(getConnection); 
+		
 	
 		
           
