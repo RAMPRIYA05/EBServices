@@ -70,7 +70,7 @@ public class UserServlet extends HttpServlet {
 	    try {
 			user.userRegister(services);
 			session.setAttribute("user", services);
-			response.sendRedirect("UserLogIn.jsp");
+			response.sendRedirect("AdminLogIn.jsp");
 			 
 		    }
 		

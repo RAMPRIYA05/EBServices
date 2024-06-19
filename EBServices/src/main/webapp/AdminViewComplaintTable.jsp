@@ -68,7 +68,7 @@ table{
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                     <li><a href="AdminComplaint.jsp">Complaint</a><li>
-                   
+                   <li><a href="http://localhost:8080/EBServices/">LogOut</a></li>
                 </ul>
             </nav>
 <table border="1">

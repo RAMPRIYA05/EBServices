@@ -98,6 +98,7 @@ margin-left:500px;
                     <li><a href="CustomerRetriveBill" method="get">View Customer Bill Details</a></li>
                 <li><a href="PaymentProcess" method="get">Paid Bills</a></li>
                 <li><a href="AdminComplaint.jsp">Complaint</a><li>
+                <li><a href="http://localhost:8080/EBServices/">LogOut</a></li>
                 </ul>
             </nav>
         </header> 

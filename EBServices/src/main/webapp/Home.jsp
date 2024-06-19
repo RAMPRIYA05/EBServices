@@ -109,16 +109,20 @@ body{
                     <li><a class="buttons-atag active" href="http://localhost:8080/EBServices/">Home</a></li>
                     <li><a href="">About Us</a></li>     
                     <li><a href="">Contact Us</a></li>
-                </ul>
-                 <div class="dropdown">SignUp
+                    <li><a href="AdminLogIn.jsp">SignIn</a></li>
+                    <li>
+                    <div class="dropdown">SignUp
                     <div class="dropdown-content">
                        <a href="AdminRegister.jsp">Admin</a>
                        <a href="UserRegister.jsp">Customer</a>
                     </div>
                  </div>
+                    </li>
+                </ul>
+                 
                  
                 
-                       <a href="AdminLogIn.jsp">SignIn</a>
+                       
                        
             </nav>
         </header> 

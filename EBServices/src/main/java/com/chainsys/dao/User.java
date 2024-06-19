@@ -189,7 +189,7 @@ public class User implements UserDAO {
 		
 		Connection connection=JDBCConnection.getConnection();
 		List<Services> list=new ArrayList<>();
-		String search="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where email_id=?";
+		String search="SELECT name,email_id,password,address,district,state,phone_number,aadhaar_number FROM user where email_id=? && delete_user=0";
 		PreparedStatement prepareStatement = connection.prepareStatement(search);
 		prepareStatement.setString(1,services.getEmailId());
 		ResultSet rows = prepareStatement.executeQuery();

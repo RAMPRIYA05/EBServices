@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import=" com.chainsys.model.Services" %>
+    <%@page import="com.chainsys.model.Services" %>
      <%@ page import="java.util.ArrayList" %>
        <%@ page import="java.util.List" %> 
 <!DOCTYPE html>
@@ -73,8 +73,11 @@ table{
                     <li><a href="http://localhost:8080/EBServices/UserHome.jsp">Home</a></li>
                     <li><a href="">About Us</a></li>
                     <li><a href="">Contact Us</a></li>    
-                    <li><a href="CustomerPayment.jsp">Payment</a></li>
-                  
+                  <li><a href="PaymentProcessForm.jsp">Payment form</a></li>
+                  <li><a href="CustomerPaidPayment" method="post">Paid status</a></li>
+                  <li><a href="Complaint.jsp">Complaint Form</a></li>
+                  <li><a href="CustomerComplaintStatus" method="post">Complaint Status</a></li>
+                  <li><a href="http://localhost:8080/EBServices/">LogOut</a></li>
                 </ul>
             </nav>
       </header> 

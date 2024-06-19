@@ -83,7 +83,7 @@ button:hover{
     Password:<input type="password" placeholder="Enter your Password" name="password" id="password" required><br>
     <span id="passwordError" class="error"></span><br>
     <button type="submit">Submit</button><br>
-    <a href="AdminRegister.jsp">or register</a>
+    <!-- <a href="AdminRegister.jsp">or register</a> -->
 </fieldset>
 </form>
 
