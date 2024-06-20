@@ -49,15 +49,78 @@ a{
  
 }
 
+
 table{
-  background-color:peachpuff;
-  margin-top:100px;
-  margin-left:200px;
+	background-color:peachpuff;
+	border-collapse: collapse;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	border: 1px solid #ddd;
+	margin-left:85px;
+	margin-right:2px;
+	margin-top:30px;
+	
+}
+
+table thead {
+        background-color: brown;
+        color: white;
+        
+    }
+table th, table td {
+        padding: 7px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+     table tr:nth-child(even) {
+        background-color:white;
+    
+    }
+    
+
+
+
+.dropdown {
+  color:gold;
+  position:relative;
+  display:inline-block;
+}
+
+.dropdown-content {
+  display:none;
+  position:absolute;
+  background-color:white;
+ min-width:60px;
+  font-size:12px;
+  box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
+}
+
+.dropdown-content a {
+  color:black;
   
+  text-decoration:none;
+  display:block;
 }
 
-
+.dropdown-content a:hover {
+  background-color:grey
 }
+
+.dropdown:hover .dropdown-content {
+  display:block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:white;
+}
+
+.buttons-atag.active{
+ 
+    color:white;
+    text-decoration:underline;
+    
+}
+
 </style>
 </head>
 <body>
@@ -68,15 +131,26 @@ table{
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                <ul> 
                     <li><a href="http://localhost:8080/EBServices/AdminHome.jsp">Home</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Contact Us</a></li>    
-                     <li><a href="AdminComplaint.jsp">Complaint</a><li>
+                    <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
+                    <li><a href="">Contact Us</a></li>   
+                      <li><a class="buttons-atag active" href="PaymentProcess" method="get">Paid Bills</a></li>   
+                   
+                     <div class="dropdown">Complaint
+                     <div class="dropdown-content">
+                        
+                        <a href="RectifiedComplaintAdmin" method="get">Pending Complaint</a>
+                        <a href="PendingComplaintAdmin" method="get">Rectified Complaint</a>
+                        
+                     </div>
+                     </div>
+                     
+                    
                   <li><a href="ReadCustomerDetails" method="get">Customer Details</a></li> 
                   <li><a href="http://localhost:8080/EBServices/">LogOut</a></li>
                </ul>
             </nav>
       </header> 
-
+ <h2 style="margin-left:550px;padding:10px;">Paid Bills</h2>
 <table border="1">
     <thead>
     <tr>
@@ -88,7 +162,7 @@ table{
        <th>Payed Amount</th>
         <th>Reading Due Date</th>
         <th>Total Amount</th>
-         
+         <th>Generate Receipt</th>
         </tr>
     </thead>
 

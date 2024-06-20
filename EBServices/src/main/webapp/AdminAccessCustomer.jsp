@@ -12,6 +12,8 @@
         *{
             margin:0;
             padding:0;
+            box-sizing: border-box;
+            
         }
         nav{
            background-color:brown;
@@ -62,24 +64,90 @@ a{
 }
 
 h4{
-    margin-left:250px;
-    padding:10px;
+    margin-left:450px;
+    padding:20px;
 }
 
 table{
 	background-color:peachpuff;
-	
-	margin-left:110px;
+	border-collapse: collapse;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	border: 1px solid #ddd;
+	margin-left:35px;
 	margin-right:2px;
 }
+
+table thead {
+        background-color: brown;
+        color: white;
+        
+    }
+table th, table td {
+        padding: 7px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+     table tr:nth-child(even) {
+        background-color:white;
+    
+    }
+    
+
 h2{
-margin-top:70px;
+margin-top:30px;
 margin-left:500px;
 }
 
-
+.dropdown {
+  color:gold;
+  position:relative;
+  display:inline-block;
 }
-</style>
+
+ 
+
+
+.dropdown-content {
+  display:none;
+  position:absolute;
+  background-color:white;
+   min-width:60px;
+  font-size:12px;
+  box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index:1;
+}
+
+.dropdown-content a {
+  color:black;
+ 
+  text-decoration:none;
+  display:block;
+}
+
+.dropdown-content a:hover {
+  background-color:grey
+}
+
+.dropdown:hover .dropdown-content {
+  display:block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color:white;
+}
+
+.buttons-atag.active{
+ 
+    color:white;
+    text-decoration:underline;
+    
+}
+
+ 
+ 
+ 
+ 
+ </style>
     
 
 
@@ -94,10 +162,19 @@ margin-left:500px;
                     <li><a href=http://localhost:8080/EBServices/AdminHome.jsp>Home</a></li>
                     <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
-                    
+                    <li><a class="buttons-atag active" href="ReadCustomerDetails" method="get">Customer Details</a></li>
                     <li><a href="CustomerRetriveBill" method="get">View Customer Bill Details</a></li>
                 <li><a href="PaymentProcess" method="get">Paid Bills</a></li>
-                <li><a href="AdminComplaint.jsp">Complaint</a><li>
+                
+                <div class="dropdown">Complaint
+                     <div class="dropdown-content">
+                        
+                        <a href="RectifiedComplaintAdmin" method="get">Pending Complaint</a>
+                        <a href="PendingComplaintAdmin" method="get">Rectified Complaint</a>
+                        
+                     </div>
+                     </div>
+                
                 <li><a href="http://localhost:8080/EBServices/">LogOut</a></li>
                 </ul>
             </nav>

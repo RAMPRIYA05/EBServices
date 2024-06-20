@@ -23,6 +23,7 @@
            /* color:blueviolet; */
            padding:15px;
         }
+        
 
         .logo,ul,li,p{
             display: inline;
@@ -42,19 +43,20 @@
         }
         .submit{
     margin-top:10px;
-    margin-left:90px;
+    margin-left:80px;
 }
 
 .admin-details {
-            background-color:chocolate;
-            color:white;
+            background-color:peachpuff;
+            color:brown;
             padding: 20px;
             margin-top:50px;
             margin-bottom:20px;
             width:350px;
             margin-left:450px;
             margin-right:250px;
-            opacity:0.8;
+            opacity:0.9;
+            box-sizing:border-box;
         }
      .details{
     
@@ -73,10 +75,6 @@ a{
  
 }
 
-h2{
-    color:white;
-   text-align:center;
-}
 
 }
 </style>
@@ -107,7 +105,7 @@ h2{
     
 <form>
 <div class="admin-details">
-<h2>Profile</h2>
+<h2 style="color:brown;margin-left:100px;">Profile</h2>
 <%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
 for(Services obj:list)
 {
@@ -128,7 +126,7 @@ for(Services obj:list)
 <div class="submit">
 	<form action="AdminDeleteServlet" method="get">
     <input type="hidden" name="deleteemailId" value="<%=obj.getEmailId()%>">
-    <input type="submit" style="color:brown;background-color:navajowhite;" name="delete" value="Delete">
+    <input type="submit" style="color:white;background-color:brown;padding:5px;" name="delete" value="Delete">
     </form>
 
         
@@ -136,7 +134,7 @@ for(Services obj:list)
 
 <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>">
 <a href="UpdateAdminName.jsp?editEmailId=<%=obj.getEmailId() %>">
-<button style="color:brown;background-color:navajowhite;" type="button">Update</button></a>
+<button style="color:white;background-color:brown;padding:5px;margin-left:35px;" type="button">Update</button></a>
  
 </div>
 

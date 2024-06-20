@@ -3,6 +3,7 @@
     <%@page import="com.chainsys.model.Services" %>
      <%@ page import="java.util.ArrayList" %>
        <%@ page import="java.util.List" %> 
+
 <!DOCTYPE html>
 <html lang="xml:land">
 <head>
@@ -11,156 +12,168 @@
 
 <style>
 * {
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
 }
 
 nav {
 	background-color: brown;
-	opacity:0.9;
-	width:1250px;
-	padding:15px;
+	opacity: 0.9;
+	width: 100%;
+	padding: 15px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
 }
 
-.logo, ul, li, p {
-	display:inline;
+nav img.logo {
+	width: 60px;
+	height: 60px;
+	vertical-align: middle;
 }
 
-li{
-	padding-left:15px;
-	cursor:pointer;
+nav p {
+	color: white;
+	font-size: 24px;
+	font-weight: 100;
+	font-style: italic;
+	margin-left: 260px;
+	display: inline-block;
+	vertical-align: middle;
 }
 
-ul{
-	margin-left:40%;
-	padding-left:5px;
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: right;
 }
 
-input[type="submit"], 
-button {
-	color:brown;
-	background-color:white;
-	opacity:0.9;
-	padding:2px;
+nav ul li {
+	display: inline-block;
+	padding-left: 15px;
+	cursor: pointer;
 }
 
-.logo{
-	size:30px;
-	height:60px;
+nav ul li a {
+	color: gold;
+	text-decoration: none;
+	font-size: 18px;
 }
 
-a{
-	color:gold;
-	text-decoration:none;
+.container {
+	margin-top: 100px;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-table{
-	background-color:peachpuff;
-	margin-top:100px;
-	margin-left:2px;
-	margin-right:2px;
+.card {
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	border-radius: 5px;
+	padding: 20px;
+	margin: 10px;
+	width: 300px;
 }
+
+
+
+.card p {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.card form {
+	margin-top: 10px;
+}
+
+.card form input[type="submit"], 
+.card form button {
+	color: brown;
+	background-color: white;
+	opacity: 0.9;
+	padding: 5px 10px;
+	cursor: pointer;
+	border: 1px solid brown;
+	border-radius: 3px;
+}
+
+.card form input[type="submit"]:hover, 
+.card form button:hover {
+	background-color: brown;
+	color: white;
+}
+
 </style>
-
 
 </head>
 <body>
-   <header>
+<header>
     <nav>
-                <img class="logo" src="EBLogo.jpg" alt="Logo">
-               <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
-                <ul> 
-                    <li><a href="http://localhost:8080/EBServices/UserHome.jsp">Home</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Contact Us</a></li>    
-                  <li><a href="PaymentProcessForm.jsp">Payment form</a></li>
-                  <li><a href="CustomerPaidPayment" method="post">Paid status</a></li>
-                  <li><a href="Complaint.jsp">Complaint Form</a></li>
-                  <li><a href="CustomerComplaintStatus" method="post">Complaint Status</a></li>
-                  <li><a href="http://localhost:8080/EBServices/">LogOut</a></li>
-                </ul>
-            </nav>
-      </header> 
-      
-<table border="1">
-    <thead>
-    <tr>   
-    <th scope="col">Email Id</th>
-    <th scope="col">Service Number</th>
-    <th scope="col">Aadhaar Number</th>
-    <th scope="col">Amount</th>
-    <th scope="col">Reading Units</th>
-    <th scope="col">Reading Taken Date</th>
-    <th scope="col">Reading Due Date</th>
-    <th scope="col">Service Type</th>
+        <img class="logo" src="EBLogo.jpg" alt="Logo">
+        <p>RP EB SERVICES AND ITS PAYMENT</p><br>
+        <ul> 
+            <li><a href="http://localhost:8080/EBServices/UserHome.jsp">Home</a></li>
+            <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
+            <li><a href="">Contact Us</a></li>    
+            <!-- <li><a href="PaymentProcessForm.jsp">Payment form</a></li>
+            <li><a href="CustomerPaidPayment" method="post">Paid status</a></li>
+            <li><a href="Complaint.jsp">Complaint Form</a></li> -->
+            <li><a href="CustomerComplaintStatus" method="post">Complaint Status</a></li>
+            <li><a href="http://localhost:8080/EBServices/">LogOut</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <th scope="col">Address</th>  
-    <th scope="col">Pay</th>
-    <th scope="col">PaidStatus</th>
-    <th scope="col">Complaint</th>
-    <th scope="col">Complaint Status</th>
-    </tr>
-    </thead>
-    
-<%List<Services> list=(ArrayList<Services>)request.getAttribute("list");
-for(Services obj:list)
-{
-%>
-<tr>
-      <td><%=obj.getEmailId() %></td>
-      <td><%=obj.getServiceNumber() %></td>
-      <td><%=obj.getAadhaarNumber() %></td>
-      <td><%=obj.getAmount() %></td>
-      <td><%=obj.getReadingUnits() %></td>
-      <td><%=obj.getReadingTakenDate() %></td>
-      <td><%=obj.getReadingDueDate() %></td>
-      <td><%=obj.getServiceType() %></td>
-      <%-- <td><%=obj.getStatus() %></td> --%>
-      <td><%=obj.getAddress() %></td>
-      
- <th scope="col">
+<div class="container">
+    <% List<Services> list = (ArrayList<Services>) request.getAttribute("list");
+    for (Services obj : list) { %>
+    <div class="card">
+        <p>Email Id: <%= obj.getEmailId() %></p>
+        <p>Service Number: <%= obj.getServiceNumber() %></p>
+        <p>Aadhaar Number: <%= obj.getAadhaarNumber() %></p>
+        <p>Amount: <%= obj.getAmount() %></p>
+        <p>Reading Units: <%= obj.getReadingUnits() %></p>
+        <p>Reading Taken Date: <%= obj.getReadingTakenDate() %></p>
+        <p>Reading Due Date: <%= obj.getReadingDueDate() %></p>
+        <p>Service Type: <%= obj.getServiceType() %></p>
+        <p>Address: <%= obj.getAddress() %></p>
 
- <form action="PaymentProcessForm.jsp">
-                    <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>">
-                  
-                    <input type="hidden" name="amount" value="<%= obj.getAmount() %>">
-                    
-                    <input type="hidden" name="readingDueDate" value="<%= obj.getReadingDueDate() %>">
-                    
-                    <input type="submit" name="pay" value="Pay"> 
-                </form>              
-</th>
+        <form action="PaymentProcessForm.jsp">
+            <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>">
+            <input type="hidden" name="amount" value="<%= obj.getAmount() %>">
+            <input type="hidden" name="readingDueDate" value="<%= obj.getReadingDueDate() %>">
+            <input type="submit" name="pay" value="Pay"> 
+        </form>
 
-<th scope="col">
-<form action="CustomerPaidPayment" method="post">
-     <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>"> 
-     <input type="submit" name="paidStatus" value="Paid Status"> 
-</form>
- </th>
- 
-<th scope="col">
-<form action="Complaint.jsp">
-     <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>"> 
-     <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>"> 
-     <input type="submit" name="complaint" value="Complaint Form"> 
-</form>
-</th> 
+        <form action="CustomerPaidPayment" method="post">
+            <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>"> 
+            <input type="submit" name="paidStatus" value="Paid Status"> 
+        </form>
 
-<th scope="col">
-<form action="CustomerComplaintStatus" method="post">
-     <input type="hidden" name="serviceNumber" value="<%=obj.getServiceNumber() %>"> 
-     <input type="submit" name="complaintStatus" value="Complaint Status"> 
-</form>
-</th>  
- 
-</tr>     
- 
+        <form action="Complaint.jsp">
+            <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>"> 
+            <input type="hidden" name="emailId" value="<%= obj.getEmailId() %>"> 
+            <input type="submit" name="complaint" value="Complaint Form"> 
+        </form>
 
- <%
-}
-%>
-</table>
-
+        <form action="CustomerComplaintStatus" method="post">
+            <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>"> 
+            <input type="submit" name="complaintStatus" value="Complaint Status"> 
+        </form>
+    </div>
+    <% } %>
+</div>
 
 </body>
 </html>
