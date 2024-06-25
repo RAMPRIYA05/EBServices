@@ -21,7 +21,7 @@
         <welcome-file>paymentTable.jsp</welcome-file>
         <welcome-file>adminPaymentTable.jsp</welcome-file>
        <welcome-file>customerPaidBills.jsp</welcome-file>  
-        <welcome-file>rectifiedComplaintTable.jsp</welcome-file> 
+    <welcome-file>rectifiedComplaintTable.jsp</welcome-file> 
         <welcome-file>userPaymentTable.jsp</welcome-file> 
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
