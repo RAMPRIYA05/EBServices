@@ -44,10 +44,10 @@ public class CustomerRetriveBill extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("list", list);
-			request.getRequestDispatcher("CustomerBill.jsp").forward(request, response);
+			request.getRequestDispatcher("customerBill.jsp").forward(request, response);
 		} else {
 
-			response.sendRedirect("AdminLogIn.jsp");
+			response.sendRedirect("adminLogIn.jsp");
 		}
 	}
 	
@@ -67,7 +67,7 @@ public class CustomerRetriveBill extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerBill.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("customerBill.jsp");
 		dispatcher.forward(request, response);
  	    }
  	    

@@ -52,7 +52,7 @@ public class AdminDeleteServlet extends HttpServlet {
          	list=admin.readForm(services);
 	          
 	            request.setAttribute("list", list);
-	            request.getRequestDispatcher("AdminFormTable.jsp").forward(request, response);
+	            request.getRequestDispatcher("adminFormTable.jsp").forward(request, response);
 			}
 			catch (ClassNotFoundException | SQLException e) 
             {
@@ -109,7 +109,7 @@ public class AdminDeleteServlet extends HttpServlet {
 	           e.printStackTrace();
 	       }
 	    request.setAttribute("list", list);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("AdminFormTable.jsp");
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("adminFormTable.jsp");
         dispatcher.forward(request, response);
 		
 	}

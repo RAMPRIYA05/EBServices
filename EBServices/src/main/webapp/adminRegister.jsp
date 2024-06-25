@@ -84,7 +84,7 @@ Name:<input type="text" placeholder="Enter your name" name="name" required><br>
 <br>Phone Number:<input type="tel" placeholder="Enter your Phone Number" name="phoneNumber" pattern="[0-9]{10}" required><br>
 <br>Aadhaar Number:<input type="number" placeholder="Enter your Aadhaar Number" name="aadhaarNumber" pattern="[0-9]{12}" required><br>
 <br><button>Register</button>
-<a href="AdminLogIn.jsp">or LogIn</a>
+<a href="adminLogIn.jsp">or LogIn</a>
 </fieldset>
 </form>
 

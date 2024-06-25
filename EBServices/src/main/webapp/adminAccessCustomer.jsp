@@ -156,11 +156,11 @@ margin-left:500px;
       
     <header>
             <nav>
-                <img class="logo" src="EBLogo.jpg" alt="Logo">
+                <img class="logo" src="ebLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
-                    <li><a href=http://localhost:8080/EBServices/AdminHome.jsp>Home</a></li>
-                    <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
+                    <li><a href=http://localhost:8080/EBServices/adminHome.jsp>Home</a></li>
+                    <li><a href="http://localhost:8080/EBServices/about.jsp">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                     <li><a class="buttons-atag active" href="ReadCustomerDetails" method="get">Customer Details</a></li>
                     <li><a href="CustomerRetriveBill" method="get">View Customer Bill Details</a></li>
@@ -226,12 +226,12 @@ for(Services obj:list)
         
 <th scope="col">
 <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>">
-<a href="UpdateAllCustomerName.jsp?editEmailId=<%=obj.getEmailId() %>">
+<a href="updateAllCustomerName.jsp?editEmailId=<%=obj.getEmailId() %>">
 <button type="button">Update</button></a>
 </th> 
 
 <th scope="col">
-<form action="BillTable.jsp">
+<form action="billTable.jsp">
   
      <input type="hidden" name="emailId" value="<%=obj.getEmailId() %>"> 
      <input type="hidden" name="aadhaarNumber" value="<%=obj.getAadhaarNumber() %>"> 

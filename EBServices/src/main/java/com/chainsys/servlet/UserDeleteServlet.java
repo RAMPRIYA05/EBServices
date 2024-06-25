@@ -47,7 +47,7 @@ public class UserDeleteServlet extends HttpServlet {
 				list=user.readForm(services);
 	          
 	            request.setAttribute("list", list);
-	            request.getRequestDispatcher("FormTable.jsp").forward(request, response);
+	            request.getRequestDispatcher("formTable.jsp").forward(request, response);
 			}
 			catch (ClassNotFoundException | SQLException e) 
             {
@@ -103,7 +103,7 @@ public class UserDeleteServlet extends HttpServlet {
 	           e.printStackTrace();
 	       }
 	    request.setAttribute("list", list);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("FormTable.jsp");
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("formTable.jsp");
         dispatcher.forward(request, response);
 	}
 

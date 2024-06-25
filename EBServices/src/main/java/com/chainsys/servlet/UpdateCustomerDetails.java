@@ -43,7 +43,7 @@ public class UpdateCustomerDetails extends HttpServlet {
 				list=user.readAll(services);
 	           
 	            request.setAttribute("list", list);
-	            request.getRequestDispatcher("AdminAccessCustomer.jsp").forward(request, response);
+	            request.getRequestDispatcher("adminAccessCustomer.jsp").forward(request, response);
 			}
 			catch (ClassNotFoundException | SQLException e) 
             {
@@ -100,7 +100,7 @@ public class UpdateCustomerDetails extends HttpServlet {
 	           e.printStackTrace();
 	       }
 	    request.setAttribute("list", list);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("AdminAccessCustomer.jsp");
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("adminAccessCustomer.jsp");
         dispatcher.forward(request, response);
 	}
 

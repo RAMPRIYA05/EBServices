@@ -119,11 +119,11 @@ table th, table td {
 <body>
 
     <nav>
-                <img class="logo" src="EBLogo.jpg" alt="Logo">
+                <img class="logo" src="ebLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
-                    <li><a href="http://localhost:8080/EBServices/AdminHome.jsp">Home</a></li>
-                    <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
+                    <li><a href="http://localhost:8080/EBServices/adminHome.jsp">Home</a></li>
+                    <li><a href="http://localhost:8080/EBServices/about.jsp">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                     
                     <div style="buttons-atag.active=color:white;text-decoration:underline;" class="dropdown">Complaint
@@ -172,7 +172,7 @@ for(Services obj:list)
 <button style="color:brown;background-color:navajowhite;" type="button">Update</button></a> --%>
 
 <input type="hidden" name="complaintId" value="<%=obj.getComplaintId() %>">
-<a href="UpdateComplaintStatus.jsp?editComplaintId=<%=obj.getComplaintId() %>">
+<a href="updateComplaintStatus.jsp?editComplaintId=<%=obj.getComplaintId() %>">
 <button style="color:brown;background-color:navajowhite;" type="button">Update</button></a>
 </th> 
         

@@ -70,13 +70,13 @@ public class UserServlet extends HttpServlet {
 	    try {
 			user.userRegister(services);
 			session.setAttribute("user", services);
-			response.sendRedirect("AdminLogIn.jsp");
+			response.sendRedirect("adminLogIn.jsp");
 			 
 		    }
 		
       catch(ClassNotFoundException | SQLException e) {
     	  e.printStackTrace();
-    	  response.sendRedirect("UserRegister.jsp");
+    	  response.sendRedirect("userRegister.jsp");
        }
 		
 		
@@ -104,13 +104,13 @@ public class UserServlet extends HttpServlet {
 				
 			
 				
-				response.sendRedirect("UserHome.jsp");
+				response.sendRedirect("userHome.jsp");
 
 				
 			}
 			else
 			{
-				response.sendRedirect("UserLogIn.jsp");
+				response.sendRedirect("userLogIn.jsp");
 			}
 			
 		}

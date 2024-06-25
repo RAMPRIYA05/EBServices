@@ -61,13 +61,13 @@ public class AdminServlet extends HttpServlet {
 	    	Admin admin=new Admin();
 			admin.adminRegister(services);
 			session.setAttribute("admin",services);
-			response.sendRedirect("AdminLogIn.jsp");
+			response.sendRedirect("adminLogIn.jsp");
 		} 
 	    catch (ClassNotFoundException | SQLException e) 
 	    {
 			
 			e.printStackTrace();
-			response.sendRedirect("AdminRegister.jsp");
+			response.sendRedirect("adminRegister.jsp");
 		}
 	    
 		}
@@ -88,16 +88,16 @@ public class AdminServlet extends HttpServlet {
             session.setAttribute("loggedIn", true);
 
             if (userType.equals("admin")) {
-                response.sendRedirect("AdminHome.jsp");
+                response.sendRedirect("adminHome.jsp");
             } else if (userType.equals("user")) {
-                response.sendRedirect("UserHome.jsp");
+                response.sendRedirect("userHome.jsp");
             } else {
                
-                response.sendRedirect("AdminLogIn.jsp"); 
+                response.sendRedirect("adminLogIn.jsp"); 
             }
         } else {
             
-            response.sendRedirect("AdminLogIn.jsp"); 
+            response.sendRedirect("adminLogIn.jsp"); 
         }
     }
 

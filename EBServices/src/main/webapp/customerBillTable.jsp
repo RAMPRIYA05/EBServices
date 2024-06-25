@@ -120,11 +120,11 @@ nav ul li a {
 <body>
 <header>
     <nav>
-        <img class="logo" src="EBLogo.jpg" alt="Logo">
+        <img class="logo" src="ebLogo.jpg" alt="Logo">
         <p>RP EB SERVICES AND ITS PAYMENT</p><br>
         <ul> 
-            <li><a href="http://localhost:8080/EBServices/UserHome.jsp">Home</a></li>
-            <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
+            <li><a href="http://localhost:8080/EBServices/userHome.jsp">Home</a></li>
+            <li><a href="http://localhost:8080/EBServices/about.jsp">About Us</a></li>
             <li><a href="">Contact Us</a></li>    
             <!-- <li><a href="PaymentProcessForm.jsp">Payment form</a></li>
             <li><a href="CustomerPaidPayment" method="post">Paid status</a></li>
@@ -149,7 +149,7 @@ nav ul li a {
         <p>Service Type: <%= obj.getServiceType() %></p>
         <p>Address: <%= obj.getAddress() %></p>
 
-        <form action="PaymentProcessForm.jsp">
+        <form action="paymentProcessForm.jsp">
             <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>">
             <input type="hidden" name="amount" value="<%= obj.getAmount() %>">
             <input type="hidden" name="readingDueDate" value="<%= obj.getReadingDueDate() %>">
@@ -161,7 +161,7 @@ nav ul li a {
             <input type="submit" name="paidStatus" value="Paid Status"> 
         </form>
 
-        <form action="Complaint.jsp">
+        <form action="complaint.jsp">
             <input type="hidden" name="serviceNumber" value="<%= obj.getServiceNumber() %>"> 
             <input type="hidden" name="emailId" value="<%= obj.getEmailId() %>"> 
             <input type="submit" name="complaint" value="Complaint Form"> 

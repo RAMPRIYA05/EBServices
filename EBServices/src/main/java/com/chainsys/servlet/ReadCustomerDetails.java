@@ -47,11 +47,11 @@ public class ReadCustomerDetails extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("list", list);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("AdminAccessCustomer.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("adminAccessCustomer.jsp");
 			dispatcher.forward(request, response);
 		} else {
 
-			response.sendRedirect("AdminLogIn.jsp");
+			response.sendRedirect("adminLogIn.jsp");
 		}
 	}
     @Override
@@ -69,7 +69,7 @@ public class ReadCustomerDetails extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("list", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("AdminAccessCustomer.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("adminAccessCustomer.jsp");
 		dispatcher.forward(request, response);
  	    }
  	    

@@ -86,11 +86,11 @@ a{
 
     <header>
             <nav>
-                <img class="logo" src="EBLogo.jpg" alt="Logo">
+                <img class="logo" src="ebLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
-                    <li><a href="http://localhost:8080/EBServices/AdminHome.jsp">Home</a></li>
-                    <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>
+                    <li><a href="http://localhost:8080/EBServices/adminHome.jsp">Home</a></li>
+                    <li><a href="http://localhost:8080/EBServices/about.jsp">About Us</a></li>
                     <li><a href="">Contact Us</a></li>
                    <li><a href="http://localhost:8080/EBServices/">LogOut</a></li>
                 </ul>

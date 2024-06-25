@@ -61,7 +61,7 @@ public class Bill extends HttpServlet {
 	            List<Services> list;
 				list=userBill.readParticularBill(services);
 				request.setAttribute("list", list);
-				request.getRequestDispatcher("CustomerAllBillTable.jsp").forward(request, response);
+				request.getRequestDispatcher("customerAllBillTable.jsp").forward(request, response);
 	          
 	    }
 	    catch(ClassNotFoundException | SQLException e  ) {
@@ -86,7 +86,7 @@ public class Bill extends HttpServlet {
 				UserBillImpl userBill=new UserBillImpl();
 				list = userBill.readParticularBill(services);
 				request.setAttribute("list", list);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("CustomerBillTable.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("customerBillTable.jsp");
 				dispatcher.forward(request, response);
 
 			} catch (ClassNotFoundException | SQLException e) {
@@ -96,7 +96,7 @@ public class Bill extends HttpServlet {
 
 		} 
 		else {
-			response.sendRedirect("UserHome.jsp");
+			response.sendRedirect("userHome.jsp");
 		}
 	}
 }

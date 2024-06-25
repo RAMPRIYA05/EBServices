@@ -112,7 +112,7 @@ function validateForm() {
     <span id="passwordError" class="error"></span><br>
     <button type="submit">Submit</button><br>
     
-    <a href="AdminRegister.jsp">or register</a>
+    <a href="adminRegister.jsp">or register</a>
 </form>
 </body>
 </html>

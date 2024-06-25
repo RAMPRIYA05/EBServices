@@ -49,7 +49,7 @@ a{
 }
 body{
     background-repeat:no-repeat;
-    background-image:url(EBBackGroundImage.jpg);
+    background-image:url(ebBackGroundImage.jpg);
     background-attachment:fixed;  
     background-size:cover;
 } 
@@ -103,18 +103,18 @@ body{
 <body>
    <header>
             <nav>
-                <img class="logo" src="EBLogo.jpg" alt="Logo">
+                <img class="logo" src="ebLogo.jpg" alt="Logo">
                <p style="color:white;font-size:300%;font-weight: 100;padding-left:100px; font-style:italic;">RP EB SERVICES AND ITS PAYMENT</p>
                 <ul> 
                     <li><a class="buttons-atag active" href="http://localhost:8080/EBServices/">Home</a></li>
-                    <li><a href="http://localhost:8080/EBServices/About.jsp">About Us</a></li>     
+                    <li><a href="http://localhost:8080/EBServices/about.jsp">About Us</a></li>     
                     <li><a href="">Contact Us</a></li>
-                    <li><a href="AdminLogIn.jsp">SignIn</a></li>
+                    <li><a href="adminLogIn.jsp">SignIn</a></li>
                     <li>
                     <div class="dropdown">SignUp
                     <div class="dropdown-content">
-                       <a href="AdminRegister.jsp">Admin</a>
-                       <a href="UserRegister.jsp">Customer</a>
+                       <a href="adminRegister.jsp">Admin</a>
+                       <a href="userRegister.jsp">Customer</a>
                     </div>
                  </div>
                     </li>
