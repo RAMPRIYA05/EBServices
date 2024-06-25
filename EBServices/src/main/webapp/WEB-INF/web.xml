@@ -2,27 +2,27 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>EBServices</display-name>
   <welcome-file-list>
-  <welcome-file>Home.jsp</welcome-file>
-  <welcome-file>AdminRegister.jsp</welcome-file>
-  <welcome-file>AdminLogIn.jsp</welcome-file>
-  <welcome-file>UserHome.jsp</welcome-file>
-   <welcome-file>AdminHome.jsp</welcome-file>
-  <welcome-file>UserRegister.jsp</welcome-file>
-  <welcome-file>AdminAccessCustomer.jsp</welcome-file>
-  <welcome-file>AdminFormTable.jsp</welcome-file>
-   <welcome-file>BillTable.jsp</welcome-file>
-   <welcome-file>FormTable.jsp</welcome-file>
-   <welcome-file>CustomerBillTable.jsp</welcome-file>
-    <welcome-file>CustomerBill.jsp</welcome-file>
-    <welcome-file>Complaint.jsp</welcome-file>
-    <welcome-file>ComplaintTable.jsp</welcome-file>
-    <welcome-file>CustomerComplaintStatus.jsp</welcome-file>
-      <welcome-file>PaymentProcessForm.jsp</welcome-file>
-        <welcome-file>PaymentTable.jsp</welcome-file>
-        <welcome-file>AdminPaymentTable.jsp</welcome-file>
-       <welcome-file>CustomerPaidBills.jsp</welcome-file>  
-        <welcome-file>RectifiedComplaintTable.jsp</welcome-file> 
-        <welcome-file>UserPaymentTable.jsp</welcome-file> 
+  <welcome-file>home.jsp</welcome-file>
+  <welcome-file>adminRegister.jsp</welcome-file>
+  <welcome-file>adminLogIn.jsp</welcome-file>
+  <welcome-file>userHome.jsp</welcome-file>
+   <welcome-file>adminHome.jsp</welcome-file>
+  <welcome-file>userRegister.jsp</welcome-file>
+  <welcome-file>adminAccessCustomer.jsp</welcome-file>
+  <welcome-file>adminFormTable.jsp</welcome-file>
+   <welcome-file>billTable.jsp</welcome-file>
+   <welcome-file>formTable.jsp</welcome-file>
+   <welcome-file>customerBillTable.jsp</welcome-file>
+    <welcome-file>customerBill.jsp</welcome-file>
+    <welcome-file>complaint.jsp</welcome-file>
+    <welcome-file>complaintTable.jsp</welcome-file>
+    <welcome-file>customerComplaintStatus.jsp</welcome-file>
+      <welcome-file>paymentProcessForm.jsp</welcome-file>
+        <welcome-file>paymentTable.jsp</welcome-file>
+        <welcome-file>adminPaymentTable.jsp</welcome-file>
+       <welcome-file>customerPaidBills.jsp</welcome-file>  
+        <welcome-file>rectifiedComplaintTable.jsp</welcome-file> 
+        <welcome-file>userPaymentTable.jsp</welcome-file> 
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
     <welcome-file>index.htm</welcome-file>
